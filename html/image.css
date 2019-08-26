@@ -1,0 +1,16 @@
+body {
+	background-image: url("image.jpg");
+	background-size: cover;
+}
+
+a:link {
+   color:yellow;
+}
+
+a:hover {
+  color:green;
+}
+
+a:visited { 
+  color:blue;
+}
