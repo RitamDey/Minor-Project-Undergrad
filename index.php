@@ -7,7 +7,7 @@
 <?php
     include "database/database.php";
     
-    echo "Placeholder for the project code";
+    echo "Placeholder for the project code <br/>";
 
     $connection = get_connection();
 
@@ -16,11 +16,16 @@
     if ($books === -1) {
 	    echo "0 books found";
     } else {
-	    while ($row = $books->fetch_assoc()) {
-		    echo "Book " . $row["name"] . " Published By " . $row["publisher"] . "<br/>";
-	    }
+?>
+        <div>
+<?php
+        while ($row = $books->fetch_assoc()) {
+            echo "Book " . $row["name"] . " Published By " . $row["publisher"] . "<br/>";
+	}
+?>
+        </div>
+<?php
     }
-
     destroy_connection($connection);
 ?>
 </body>
