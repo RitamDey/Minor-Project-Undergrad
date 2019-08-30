@@ -1,28 +1,30 @@
 <?php
 
-function get_connection() {
+function getConnection() {
+	/**
+	 * Creates and returns a new connection to the MySQL database
+	 */
 	$servername = "localhost";
 	$username = "bookstore";
 	$password = "bookstore";
 
 	$conn = mysqli_connect($servername, $username, $password);
 
-	if (!$conn) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
+	if ($conn->get_connection_stats() == false)
+		die("Connection failed: " . $conn->connect_error);
 
 	return $conn;
 }
 
 
-function get_books($connection) {
+function getBooks($connection) {
 	/**
-	 * Wrapper around the select statment to fetch all the books present in the database. Expects a single parameter:
-	 * $connection := Connection to the database
+	 * Wrapper around the select statement to fetch all the books present in the database. Expects a single parameter:
+	 * @var $connection mysqli := Represents a connection to the MySQL database
 	 * Returns the result of the query if one or more rows are found,
 	 * Else returns -1, to signify no result
 	 */
-	$query = "SELECT name,publisher,author FROM bookstore.book;";
+	$query = "SELECT isbn,name,publisher,author FROM bookstore.book;";
 
 	$result = $connection->query($query);
 
@@ -34,11 +36,11 @@ function get_books($connection) {
 }
 
 
-function get_by($connection, $attrib) {
+function getBy($connection, $attrib) {
 	/**
 	 * Wrapper around the SQL "GROUP BY" statment. Expects two parameters:
-	 * $connection := Connection to the database
-	 * $attrib := The field on which the "GROUP BY" should be performed.
+	 * @var $connection mysqli := Connection to the database
+	 * @var $attrib string := The field on which the "GROUP BY" should be performed.
 	 * This function returns the result of the query only if one or more rows have been returned by the database
 	 * Else it returns -1, to signify no result.
 	 */
@@ -50,14 +52,19 @@ function get_by($connection, $attrib) {
 		return -1;
 	}
 
-	return $rows;
+	return $result;
 }
 
 
-function destroy_connection($connection) {
-	// Destroys a database connection
+function destroyConnection($connection) {
+	/**
+	 * Destroys a database connection
+	 * @var $connection mysqli := Connection to the MySQL database
+	 */
 	if ($connection) {
-		mysqli_close($connection);
+		$connection->close();
 	}
+
+	$connection = null;
 }
 ?>
