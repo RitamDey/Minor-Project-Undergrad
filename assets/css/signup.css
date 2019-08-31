@@ -1,0 +1,81 @@
+body{
+    background-size: cover;
+    font-family: 'Times New Roman';
+    font-size: 20px;
+    
+}
+
+.signup{
+    width: 400px;
+    height: 1300px;
+    padding: 30px 20px;
+    top: 1%;
+    left: 39%;
+    bottom: 30;
+    position: absolute;
+    transform: translate(-2%,-1%);
+    box-sizing: border-box;
+    border: 300px;
+    
+    
+}
+h1{
+    margin: auto;
+    padding: 0 0 30px;
+    font-family: serif;
+    font-size: 45px;
+}
+.signup p{
+    font-family: Verdana;
+    font-size: 20px;
+    font-weight: bold;
+}
+.signup input{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    font-weight: bold;
+    width: 300px;
+}
+.signup input[type="password"]{
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background: transparent;
+    height: 50px;
+    color:black;
+    font-size: 17px;
+
+}
+.signup input[type="text"] {
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background: transparent;
+    height: 50px;
+    color: black;
+    font-size: 17px;
+}
+
+.signup input[type="submit"] {
+    border: none;
+    background-color: green;
+    color: #fff;
+    width: 150px;
+    outline: none;
+    font-size: 20px;
+    font-family: cursive;
+    font-style: italic;
+
+}
+.signup input[type="number"] {
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background: transparent;
+    height: 50px;
+    color: black;
+    font-size: 17px;
+}
+.signup input[type="submit"]:hover{
+    background-color: chocolate;
+}
