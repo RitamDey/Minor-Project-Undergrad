@@ -1,16 +1,26 @@
 body {
-	background-image: url("image.jpg");
-	background-size: cover;
+background-image: url("image.jpg");
+background-size: cover;
+background
+
 }
 
-a:link {
-   color:yellow;
+.hyperlink a{
+  font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    color: yellow;
+    padding:1px;
+    border: none;
+    outline: none;
+    margin: unset;
+    
 }
+.hyperlink{
+  text-align: right;
 
-a:hover {
+}
+.hyperlink a:hover{
   color:green;
+    
 }
 
-a:visited { 
-  color:blue;
-}
