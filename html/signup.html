@@ -3,12 +3,13 @@
         <title>
             Signup page
         </title>
-        <link rel="stylesheet" href="signup.css" type="text/css">
+        <link rel="stylesheet" href="/assets/css/signup.css" type="text/css">
+        <link rel="script" href="/assets/js/sign.js" type="text/plain">
      </head>
      <body>
          <div class="signup">
              <h1 align="center">Signup Here</h1>
-             <form name="Signup" method="post" action="register.html" onsubmit="val()">
+             <form name="Signup" method="POST" action="/auth/register.php" onsubmit="validate()">
                 <p>First name</p>
                 <input type="text" name="firstname" placeholder="Enter your name" required><br>
                 <p>Last name</p>
