@@ -38,7 +38,7 @@ function getBooks($connection) {
 
 function getBy($connection, $attrib) {
 	/**
-	 * Wrapper around the SQL "GROUP BY" statment. Expects two parameters:
+	 * Wrapper around the SQL "GROUP BY" statement. Expects two parameters:
 	 * @var $connection mysqli := Connection to the database
 	 * @var $attrib string := The field on which the "GROUP BY" should be performed.
 	 * This function returns the result of the query only if one or more rows have been returned by the database

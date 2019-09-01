@@ -21,10 +21,10 @@ if ($bookDeatils == -1)
                 <div id="book-picture">
                     <?php
                         if ($bookDeatils["picture"])
-                            echo "<img src=\"" . $bookDeatils["picture"] . "\">";
+                            echo "<img src='{$bookDeatils["picture"]}' alt=''>";
                         else
                             // TODO: Find a default image for books that have no image
-                            echo "<img src=\"\">";
+                            echo "<img src=\"\" alt=''>";
                     ?>
                 </div>
 
@@ -36,15 +36,16 @@ if ($bookDeatils == -1)
 
                 <div id="book-tags">
                     <?php
-                    foreach (getTags($connection, $_GET["isbn"]) as $tag) {
-                        echo "<small><a href=\"". $tag["tag"] ."\"";
+                    $tags = getTags($connection, $_GET["isbn"]);
+                    foreach ($tags as $tag) {
+                        echo "<a href='tag/{$tag["tag"]}'>{$tag["tag"]}</a>&nbsp;";
                     }
                     ?>
                 </div>
 
                 <div id="book-price">
                     <?php
-                    echo $bookDeatils["price"];
+                    echo "Price: {$bookDeatils["price"]}";
                     ?>
                 </div>
             </div>
@@ -52,7 +53,12 @@ if ($bookDeatils == -1)
 
         <div id="book-details">
             <?php
-                echo $bookDeatils["details"];
+                echo $bookDeatils["detail"];
+            ?>
+        </div>
+        <div class="book-author">
+            Written by<?php
+                echo "<a href='/author.php?name={$bookDeatils["author"]}'>{$bookDeatils["author"]}</a>";
             ?>
         </div>
     </body>

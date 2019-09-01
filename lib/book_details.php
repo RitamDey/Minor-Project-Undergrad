@@ -15,7 +15,7 @@ function getDetails($connection, $isbn) {
     if (validateParameter($isbn) == false) {
         return -1;
     }
-    $query = "SELECT name,price,book_number,series,publisher,author,picture,genre FROM bookstore.book WHERE isbn = " . $isbn;
+    $query = "SELECT isbn,name,price,book_number,series,publisher,author,picture,genre,detail FROM bookstore.book WHERE isbn = " . $isbn;
 
     $result = $connection->query($query);
 
@@ -48,7 +48,7 @@ function getTags($connection, $isbn) {
      * @var $connection mysqli := MySQL database connection
      * @var $isbn int := ISBN representing the book
      */
-    $query = "SELECT tag FROM is_tagged WHERE isbn = " . $isbn;
+    $query = "SELECT tag FROM bookstore.is_tagged WHERE isbn = '{$isbn}';";
 
     return $connection->query($query);
 }
