@@ -26,3 +26,5 @@
 
 # PHPStrom
 .idea/
+
+*/.DS_Store
