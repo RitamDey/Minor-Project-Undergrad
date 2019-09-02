@@ -24,7 +24,7 @@ function getBooks($connection) {
 	 * Returns the result of the query if one or more rows are found,
 	 * Else returns -1, to signify no result
 	 */
-	$query = "SELECT isbn,name,publisher,author FROM bookstore.book;";
+	$query = "SELECT isbn,name,publisher,author,picture FROM bookstore.book;";
 
 	$result = $connection->query($query);
 
