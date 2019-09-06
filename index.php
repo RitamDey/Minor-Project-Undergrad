@@ -5,6 +5,8 @@
 
 <body>
 <?php
+    // Prevent showing mysql errors
+    //error_reporting(0);
     require "database/database.php";
     $connection = getConnection();
     $books = getBooks($connection);
