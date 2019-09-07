@@ -38,7 +38,7 @@ if ($bookDeatils == -1)
                     <?php
                     $tags = getTags($connection, $_GET["isbn"]);
                     foreach ($tags as $tag) {
-                        echo "<a href='tag/{$tag["tag"]}'>{$tag["tag"]}</a>&nbsp;";
+                        echo "<a href='tag.php?tag={$tag["tag"]}'>{$tag["tag"]}</a>&nbsp;";
                     }
                     ?>
                 </div>
