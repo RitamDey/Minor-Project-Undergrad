@@ -1,9 +1,8 @@
 <?php
 require "database/database.php";
-require "lib/santizers_validators.php";
+require "lib/sanitizers_validators.php";
 
 $connection = getConnection();
-$tag = $_GET["tag"];
 ?>
 <html>
 <head>
@@ -12,6 +11,7 @@ $tag = $_GET["tag"];
 
 <body>
 <?php
+$tag = sanitizeName($_GET["tag"]);
 echo $tag;
 $tag_query = "SELECT name,description FROM bookstore.tag WHERE name = '{$tag}'";
 $book_query = "SELECT isbn,name,picture FROM bookstore.book WHERE isbn IN (SELECT isbn FROM bookstore.is_tagged WHERE tag = '{$tag}')";

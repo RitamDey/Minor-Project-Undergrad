@@ -34,6 +34,15 @@ if ($bookDeatils == -1)
                     ?>
                 </div>
 
+                <?php
+                if ($bookDeatils["series"] != null) {
+                    echo "<div class='book-series'>";
+                    echo "<a class='series' href='series.php?series={$bookDeatils["series"]}'>";
+                    echo "{$bookDeatils["series"]}</a> Book {$bookDeatils["book_number"]}";
+                    echo "</div>";
+                }
+                ?>
+
                 <div id="book-tags">
                     <?php
                     $tags = getTags($connection, $_GET["isbn"]);
