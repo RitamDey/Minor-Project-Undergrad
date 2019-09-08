@@ -1,15 +1,11 @@
 body {
-background-image: url("about.jpg"); 
-background-size: cover;
-font-family: Arial;
-
-
-
-
+  background-image: url("/assets/images/about.jpg");
+  background-size: cover;
+  font-family: Arial;
 }
 
 
-.hyperlink a{
+.hyperlink a {
     font-family: 'Times New Roman', Times, serif;
     font-size: 25px;
     color: yellow;
@@ -18,31 +14,28 @@ font-family: Arial;
     outline: none;
     margin: unset;
     text-decoration: none;
-    
 }
-.hyperlink{
+
+.hyperlink {
   text-align: right;
-
 }
-.hyperlink a:hover{
+
+.hyperlink a:hover {
   color:green;
-    
 }
 
-.menu ul{
+.menu ul {
   padding:0px;
-  margin: 0px;
+  margin: 0%;
   list-style: none;
-  
-
 }
-.menu ul li{
+
+.menu ul li {
   float: left;
   width: 200px;
   height: 45px;
   background-color: black;
   transform: translate(-0.7%,-80%);
-  
   font-size: 20px;
   color: white;
   opacity: 0.8;
@@ -50,67 +43,71 @@ font-family: Arial;
   line-height: 40px;
   margin-right: 2px;
 }
-.menu ul a{
+
+.menu ul a {
   text-decoration: none;
   color: white;
   display: block;
 }
-.menu ul li a:hover{
+
+.menu ul li a:hover {
   background-color: green;
 }
-h1{
+
+h1 {
   text-align: center;
   font-family: fantasy;
   color: white;
 }
-.menu ul li ul li{
+
+.menu ul li ul li {
   display: none;
 }
 
-.menu ul li:hover ul li{
+.menu ul li:hover {
+  align-self: center;
+}
+.menu ul li:hover ul li {
   display: block;
 }
 
-.about p{
+.about p {
   text-align: justify;
   font-size: 15px;
   padding: 2px;
   padding: 20px;
   line-height: 40px;
   color:white;
-  
-  
-  
 }
-.about h1{
+
+.about h1 {
   text-align:left;
   color:white;
- 
 }
-.decoration{
+
+.decoration {
   text-align: center;
 }
 
-p{
+p {
   font-size: 30px;
   text-align: left;
   font-family: fantasy;
   color: white;
-  
-
 }
 
-.book p{
+.book p {
   text-align: left;
   font-size: 20px;
 }
 
-.book a{
+.book a {
   text-decoration: none;
   color:white;
   font-size: 20px;
   text-align: center;
 }
-.book a:hover{
+
+.book a:hover {
   color: green;
 }
