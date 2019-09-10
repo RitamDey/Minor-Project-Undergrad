@@ -32,14 +32,13 @@
 	
 	<marquee scrollamount="15">
 		<table cellspacing="20px" cellpadding="20px" margin="0px">
-			
-			<tr>
-			<td><a href="#"><img src="/assets/images/book1.jpg" height="300px"></a></td>
-			<td><a href="#"><img src="/assets/images/book2.jpg" height="300px"></a></td>
-			<td><a href="#"><img src="/assets/images/book3.jpg" height="300px"></a></td>
-			<td><a href="#"><img src="/assets/images/book4.jpg" height="300px"></a></td>
-			</tr>
-			
+            <tr>
+            <?php
+                while ($row = $books->fetch_assoc()) {
+                    echo "<td><a href='/details.php?isbn={$row["isbn"]}'><img src='{$row["picture"]}' heigth='300px'></a></td>";
+                }
+            ?>
+            </tr>
 		</table>
 	</marquee>		
 </body>
