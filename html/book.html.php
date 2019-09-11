@@ -14,8 +14,8 @@
 	</div>
 	<div class="menu">
 			<ul>
-				<li><a href="book.html">Home</a></li>
-				<li><a href="about.html">About Us</a></li>
+				<li><a href="/">Home</a></li>
+				<li><a href="/about.php">About Us</a></li>
 				<li><a href="product.html">Books</a>
 					<ul>
 						<li><a href="storybook.html">Story Book</a></li>
@@ -23,9 +23,9 @@
 						<li><a href="competetive">Competative Exam Book</a></li>
 						<li><a href="novel.html">Novel</a></li>
 				</ul></li>
-				<li><a href="contact.html">contact Us</a></li>
+				<li><a href="/contact.php">contact Us</a></li>
 			</ul>
-		</div>
+    </div>
 	<br>
 	
 	<p>New Arrival</p><br>
