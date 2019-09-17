@@ -3,31 +3,24 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 03, 2019 at 11:26 AM
+-- Generation Time: Sep 17, 2019 at 11:04 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+05:30";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `authentication`
---
-CREATE DATABASE IF NOT EXISTS `authentication` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `authentication`;
+USE `bookstore`;
 --
 -- Database: `bookstore`
 --
-CREATE DATABASE IF NOT EXISTS `bookstore` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `bookstore`;
 
 -- --------------------------------------------------------
 
@@ -40,7 +33,7 @@ CREATE TABLE `author` (
   `bio` text,
   `site` text,
   `picture` varchar(100) DEFAULT NULL,
-  `dob` datetime DEFAULT NULL
+  `dob` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -53,12 +46,15 @@ CREATE TABLE `book` (
   `isbn` bigint(13) NOT NULL,
   `name` varchar(100) NOT NULL,
   `detail` text NOT NULL,
+  `date_published` date NOT NULL,
   `price` float NOT NULL,
   `book_number` int(11) DEFAULT NULL,
   `series` varchar(15) DEFAULT NULL,
   `publisher` varchar(15) NOT NULL,
   `author` varchar(15) NOT NULL,
-  `picture` varchar(100) DEFAULT NULL
+  `picture` varchar(100) DEFAULT NULL,
+  `total_pages` int(11) NOT NULL,
+  `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -72,6 +68,7 @@ CREATE TABLE `is_tagged` (
   `isbn` bigint(13) NOT NULL,
   `tag` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 -- --------------------------------------------------------
 
@@ -93,6 +90,7 @@ CREATE TABLE `publisher` (
 
 CREATE TABLE `series` (
   `title` varchar(30) NOT NULL,
+  `picture` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `author` varchar(15) NOT NULL,
   `publisher` varchar(15) NOT NULL
@@ -164,7 +162,7 @@ ALTER TABLE `tag`
 -- AUTO_INCREMENT for table `is_tagged`
 --
 ALTER TABLE `is_tagged`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
