@@ -1,16 +1,10 @@
 <?php
-require "database/database.php";
+    require_once "templates/header.html.php";
+?>
+
+<?php
 require "lib/sanitizers_validators.php";
 
-$connection = getConnection();
-?>
-<html>
-<head>
-    <title> Book Store </title>
-</head>
-
-<body>
-<?php
 $tag = sanitizeName($_GET["tag"]);
 echo $tag;
 $tag_query = "SELECT name,description FROM bookstore.tag WHERE name = '{$tag}'";
@@ -37,6 +31,6 @@ while ($book = $books->fetch_assoc()) {
     echo "<li><a href='details.php?isbn={$book["isbn"]}'><img src='{$book["picture"]}' alt=''></a>{$book["name"]}</li>";
 }
 echo "</ul>";
+
+require_once "templates/footer.html.php"
 ?>
-</body>
-</html>

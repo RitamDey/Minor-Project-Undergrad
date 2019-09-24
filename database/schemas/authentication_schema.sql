@@ -10,8 +10,8 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+00:00";
-
+SET time_zone = "+05:30";
+USE `authentication`;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 -- Creation: Sep 06, 2019 at 07:00 PM
 --
-
+DROP TABLE IF EXISTS `bill`;
 CREATE TABLE `bill` (
   `id` bigint(20) NOT NULL,
   `customer` bigint(20) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE `bill` (
 --
 -- Creation: Sep 06, 2019 at 07:02 PM
 --
-
+DROP TABLE IF EXISTS `books_bill`;
 CREATE TABLE `books_bill` (
   `id` bigint(20) NOT NULL,
   `book` bigint(13) NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE `books_bill` (
 --
 -- Creation: Sep 06, 2019 at 05:21 PM
 --
-
+DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer` (
   `id` bigint(20) NOT NULL,
   `name` varchar(100) NOT NULL,

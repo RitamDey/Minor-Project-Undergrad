@@ -11,6 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+05:30";
+SET FOREIGN_KEY_CHECKS=0;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,7 +28,7 @@ USE `bookstore`;
 --
 -- Table structure for table `author`
 --
-
+DROP TABLE IF EXISTS `author`;
 CREATE TABLE `author` (
   `name` varchar(15) NOT NULL,
   `bio` text,
@@ -39,9 +40,58 @@ CREATE TABLE `author` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tag`
+--
+DROP TABLE IF EXISTS `tag`;
+CREATE TABLE `tag` (
+  `name` varchar(20) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `publisher`
+--
+DROP TABLE IF EXISTS `publisher`;
+CREATE TABLE `publisher` (
+  `name` varchar(15) NOT NULL,
+  `address` text,
+  `contact` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `series`
+--
+DROP TABLE IF EXISTS `series`;
+CREATE TABLE `series` (
+  `title` varchar(30) NOT NULL,
+  `picture` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `author` varchar(15) NOT NULL,
+  `publisher` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `is_tagged`
+--
+DROP TABLE IF EXISTS `is_tagged`;
+CREATE TABLE `is_tagged` (
+  `id` int(11) NOT NULL,
+  `isbn` bigint(13) NOT NULL,
+  `tag` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `book`
 --
-
+DROP TABLE IF EXISTS `book`;
 CREATE TABLE `book` (
   `isbn` bigint(13) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -57,55 +107,6 @@ CREATE TABLE `book` (
   `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `is_tagged`
---
-
-CREATE TABLE `is_tagged` (
-  `id` int(11) NOT NULL,
-  `isbn` bigint(13) NOT NULL,
-  `tag` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `publisher`
---
-
-CREATE TABLE `publisher` (
-  `name` varchar(15) NOT NULL,
-  `address` text,
-  `contact` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `series`
---
-
-CREATE TABLE `series` (
-  `title` varchar(30) NOT NULL,
-  `picture` varchar(100) NOT NULL,
-  `description` text NOT NULL,
-  `author` varchar(15) NOT NULL,
-  `publisher` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tag`
---
-
-CREATE TABLE `tag` (
-  `name` varchar(20) NOT NULL,
-  `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
