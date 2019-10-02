@@ -5,8 +5,6 @@ body {
 	font-family: Verdana, Arial, san-serif;
 	font-size: 11px;
 	color: #ffffff;
-	
-
 	background: #4b4743;
 }
 
@@ -23,7 +21,6 @@ img {
 	padding: 0;
 	border: none;
 }
-
 
 .cleaner {
 	clear: both;
@@ -185,12 +182,7 @@ img {
 	color: #999;
 	background-color: #111110;
 	position: relative;
-	bottom: -690px;
-	
-
-	
-	
-	
+	bottom: -690px;	
 }
 
 #footer a{
@@ -205,7 +197,7 @@ img {
 
 
 
-.signup{
+.signup {
     width: 400px;
     height: 1300px;
     padding: 30px 20px;
@@ -219,25 +211,29 @@ img {
     
     
 }
-h1{
+
+h1 {
     margin: auto;
     padding: 0 0 30px;
     font-family: serif;
     font-size: 45px;
     color: white;
 }
-.signup p{
+
+.signup p {
     font-family: Verdana;
     font-size: 20px;
     font-weight: bold;
 }
-.signup input{
+
+.signup input {
     font-family: 'Times New Roman', Times, serif;
     font-size: 15px;
     font-weight: bold;
     width: 300px;
 }
-.signup input[type="password"]{
+
+.signup input[type="password"] {
     border: none;
     border-bottom: 1px solid black;
     outline: none;
@@ -247,6 +243,7 @@ h1{
     font-size: 17px;
 
 }
+
 .signup input[type="text"] {
     border: none;
     border-bottom: 1px solid black;
@@ -268,6 +265,7 @@ h1{
     font-style: italic;
 
 }
+
 .signup input[type="number"] {
     border: none;
     border-bottom: 1px solid black;
@@ -277,9 +275,11 @@ h1{
     color: white;
     font-size: 17px;
 }
+
 .signup input[type="submit"]:hover{
     background-color: chocolate;
 }
+
 .signup textarea {
     border: none;
     border-bottom: 1px solid black;
@@ -291,7 +291,7 @@ h1{
     width: 300px;
 }
 
-.signup a{
+.signup a {
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
     color: darkgray;
@@ -301,10 +301,10 @@ h1{
     margin: unset;
 }
 
-.signup a:hover{
+.signup a:hover {
     color:chocolate;
 }
 
-.signup a:visited{
+.signup a:visited {
     color:yellow;
 }
