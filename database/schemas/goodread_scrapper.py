@@ -42,14 +42,14 @@ def ParseBook(book):
 	DESC_XPATH = "//*[@id='description']/span[2]/text()"
 	PICTURE_XPATH = ""
 
-	book = {}
-	book["name"] = book.xpath(TITLE_XPATH)[0].strip()
+	book_info = {}
+	book_info["name"] = book.xpath(TITLE_XPATH)[0].strip()
 
 	description = book.xpath(DESC_XPATH)
 	if description:
-		book["description"] = description
+		book_info["description"] = description
 	else:
-		book["description"] = "Description not provided"
+		book_info["description"] = "Description not provided"
 
 	
 	pass

@@ -226,6 +226,12 @@ h1 {
     font-weight: bold;
 }
 
+.signup label {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+}
+
 .signup input {
     font-family: 'Times New Roman', Times, serif;
     font-size: 15px;

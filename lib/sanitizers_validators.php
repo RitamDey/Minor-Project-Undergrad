@@ -6,4 +6,14 @@ function sanitizeName($name) {
      */
     return $name;
 }
+
+
+function sanitizeEmail(string $email): string {
+    /**
+     * Sanitizes if the supplied string is a valid email or not
+     * @var $email string := The email to validate
+    **/
+
+    return filter_var($email, FILTER_SANITIZE_EMAIL);
+}
 ?>

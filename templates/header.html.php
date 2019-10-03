@@ -26,6 +26,8 @@ if ($connection->get_connection_stats() === false) {
             <li><a href="/index.php?sort=new-releases">New Releases</a></li>
             <li><a href="/about.php">About Us</a></li>
             <li><a href="/contact.php">Contact Us</a></li>
+
+            <li><a href="/authentication/signup.php">Sign Up</a></li>
         </ul>
     </div> <!-- end of menu -->
 
