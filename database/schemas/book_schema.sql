@@ -1,24 +1,14 @@
--- phpMyAdmin SQL Dump
--- version 4.8.4
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Generation Time: Sep 17, 2019 at 11:04 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+05:30";
-SET FOREIGN_KEY_CHECKS=0;
-
+USE `bookstore`;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-USE `bookstore`;
+
 --
 -- Database: `bookstore`
 --
@@ -28,8 +18,10 @@ USE `bookstore`;
 --
 -- Table structure for table `author`
 --
-DROP TABLE IF EXISTS `author`;
-CREATE TABLE `author` (
+-- Creation: Sep 07, 2019 at 05:13 AM
+--
+
+CREATE TABLE IF NOT EXISTS `author` (
   `name` varchar(15) NOT NULL,
   `bio` text,
   `site` text,
@@ -37,62 +29,19 @@ CREATE TABLE `author` (
   `dob` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `tag`
+-- RELATIONSHIPS FOR TABLE `author`:
 --
-DROP TABLE IF EXISTS `tag`;
-CREATE TABLE `tag` (
-  `name` varchar(20) NOT NULL,
-  `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `publisher`
---
-DROP TABLE IF EXISTS `publisher`;
-CREATE TABLE `publisher` (
-  `name` varchar(15) NOT NULL,
-  `address` text,
-  `contact` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `series`
---
-DROP TABLE IF EXISTS `series`;
-CREATE TABLE `series` (
-  `title` varchar(30) NOT NULL,
-  `picture` varchar(100) NOT NULL,
-  `description` text NOT NULL,
-  `author` varchar(15) NOT NULL,
-  `publisher` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `is_tagged`
---
-DROP TABLE IF EXISTS `is_tagged`;
-CREATE TABLE `is_tagged` (
-  `id` int(11) NOT NULL,
-  `isbn` bigint(13) NOT NULL,
-  `tag` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `book`
 --
-DROP TABLE IF EXISTS `book`;
-CREATE TABLE `book` (
+-- Creation: Sep 17, 2019 at 09:03 AM
+--
+
+CREATE TABLE IF NOT EXISTS `book` (
   `isbn` bigint(13) NOT NULL,
   `name` varchar(100) NOT NULL,
   `detail` text NOT NULL,
@@ -107,7 +56,92 @@ CREATE TABLE `book` (
   `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- RELATIONSHIPS FOR TABLE `book`:
+--   `author`
+--       `author` -> `name`
+--   `publisher`
+--       `publisher` -> `name`
+--   `series`
+--       `series` -> `title`
+--
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `is_tagged`
+--
+-- Creation: Aug 30, 2019 at 04:59 AM
+--
+
+CREATE TABLE IF NOT EXISTS `is_tagged` (
+  `id` int(11) NOT NULL,
+  `isbn` bigint(13) NOT NULL,
+  `tag` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `is_tagged`:
+--   `tag`
+--       `tag` -> `name`
+--   `isbn`
+--       `book` -> `isbn`
+--
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `publisher`
+--
+-- Creation: Aug 28, 2019 at 01:58 PM
+--
+
+CREATE TABLE IF NOT EXISTS `publisher` (
+  `name` varchar(15) NOT NULL,
+  `address` text,
+  `contact` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `publisher`:
+--
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `series`
+--
+-- Creation: Sep 07, 2019 at 07:59 PM
+--
+
+CREATE TABLE IF NOT EXISTS `series` (
+  `title` varchar(30) NOT NULL,
+  `picture` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `author` varchar(15) NOT NULL,
+  `publisher` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `series`:
+--   `author`
+--       `author` -> `name`
+--   `publisher`
+--       `publisher` -> `name`
+--
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tag`
+--
+-- Creation: Sep 02, 2019 at 06:25 AM
+--
+
+CREATE TABLE IF NOT EXISTS `tag` (
+  `name` varchar(20) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `tag`:
+--
 --
 -- Indexes for dumped tables
 --

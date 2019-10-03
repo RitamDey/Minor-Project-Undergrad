@@ -1,17 +1,8 @@
--- phpMyAdmin SQL Dump
--- version 4.8.4
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Generation Time: Sep 06, 2019 at 09:12 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+05:30";
-USE `authentication`;
+USE `authentication`
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,64 +16,22 @@ USE `authentication`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill`
---
--- Creation: Sep 06, 2019 at 07:00 PM
---
-DROP TABLE IF EXISTS `bill`;
-CREATE TABLE `bill` (
-  `id` bigint(20) NOT NULL,
-  `customer` bigint(20) NOT NULL,
-  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `bill`:
---   `customer`
---       `customer` -> `id`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `books_bill`
---
--- Creation: Sep 06, 2019 at 07:02 PM
---
-DROP TABLE IF EXISTS `books_bill`;
-CREATE TABLE `books_bill` (
-  `id` bigint(20) NOT NULL,
-  `book` bigint(13) NOT NULL,
-  `quantity` int(11) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `books_bill`:
---   `book`
---       `book` -> `isbn`
---   `id`
---       `bill` -> `id`
---
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `customer`
 --
--- Creation: Sep 06, 2019 at 05:21 PM
+-- Creation: Oct 03, 2019 at 04:25 PM
 --
-DROP TABLE IF EXISTS `customer`;
-CREATE TABLE `customer` (
+
+CREATE TABLE IF NOT EXISTS `customer` (
   `id` bigint(20) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `dob` date NOT NULL,
-  `phone` bigint(10) NOT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `address` varchar(500) NOT NULL,
-  `state` varchar(5) NOT NULL,
-  `pin` bigint(7) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `picture` varchar(100) NOT NULL
+  `name` varchar(100) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `joined` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `phone` bigint(10) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `address` varchar(500) DEFAULT NULL,
+  `pin` bigint(7) DEFAULT NULL,
+  `password` varchar(1000) NOT NULL,
+  `picture` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -93,6 +42,36 @@ CREATE TABLE `customer` (
 
 --
 -- RELATIONSHIPS FOR TABLE `customer`:
+--   `id`
+--       `bill` -> `billed_to`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee`
+--
+-- Creation: Oct 03, 2019 at 04:29 PM
+--
+
+CREATE TABLE IF NOT EXISTS `employee` (
+  `id` bigint(20) NOT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
+  `name` varchar(100) NOT NULL,
+  `dob` date NOT NULL,
+  `joined` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `phone` bigint(10) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `pin` bigint(7) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `picture` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `employee`:
+--   `id`
+--       `bill` -> `billed_by`
 --
 
 --
@@ -100,59 +79,46 @@ CREATE TABLE `customer` (
 --
 
 --
--- Indexes for table `bill`
---
-ALTER TABLE `bill`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `customer` (`customer`);
-
---
--- Indexes for table `books_bill`
---
-ALTER TABLE `books_bill`
-  ADD KEY `id` (`id`),
-  ADD KEY `book` (`book`);
-
---
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `phone` (`phone`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `phone` (`phone`);
+
+--
+-- Indexes for table `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `phone` (`phone`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `bill`
---
-ALTER TABLE `bill`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `bill`
+-- Constraints for table `customer`
 --
-ALTER TABLE `bill`
-  ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`customer`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `customer`
+  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `bill` (`billed_to`);
 
 --
--- Constraints for table `books_bill`
+-- Constraints for table `employee`
 --
-ALTER TABLE `books_bill`
-  ADD CONSTRAINT `books_bill_ibfk_1` FOREIGN KEY (`book`) REFERENCES `bookstore`.`book` (`isbn`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `books_bill_ibfk_2` FOREIGN KEY (`id`) REFERENCES `bill` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `employee`
+  ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`id`) REFERENCES `bill` (`billed_by`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
