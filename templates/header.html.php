@@ -13,7 +13,6 @@ if ($connection->get_connection_stats() === false) {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php echo $TITLE; ?></title>
     <link href="/assets/css/common_style.css" rel="stylesheet" type="text/css" />
-    <script src="https://kit.fontawesome.com/795f6b8766.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -27,7 +26,7 @@ if ($connection->get_connection_stats() === false) {
             <li><a href="/about.php">About Us</a></li>
             <li><a href="/contact.php">Contact Us</a></li>
 <?php
-if (checkActiveSession($_COOKIE["PHPSESSID"])) {
+if (isset($_COOKIE["PHPSESSID"]) && checkActiveSession($_COOKIE["PHPSESSID"])) {
     echo "<li><a href=\"/cart.php\">View Cart</a></li>";
     echo "<li><a href=\"/authentication/profile.php\">Profile</a></li>";
 } else {

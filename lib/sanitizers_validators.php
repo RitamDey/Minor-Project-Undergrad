@@ -12,6 +12,11 @@ function validatePicture($url) {
     return filter_var($url, FILTER_VALIDATE_URL);
 }
 
+function validateISBN(string $isbn): string {
+    // TODO: Validation for the passed ISBN
+    return $isbn;
+}
+
 function sanitizeEmail(string $email): string {
     /**
      * Sanitizes if the supplied string is a valid email or not
@@ -29,7 +34,11 @@ function sanitizePassword(string $password): string {
     return $password;
 }
 
-function checkActiveSession(string $session_id): bool {
+// The argument to the function is a session id, or can be null if there is no current PHPSESSID defined
+function checkActiveSession(?string $session_id): bool {
+    if ($session_id === null)
+        return false;
+    
     $connection = new mysqli("localhost", "bookstore", "bookstore", "authentication");
     // If a session is present, it would return the active time in hh:mm:ss 
     $query = "SELECT TIMEDIFF(NOW(), started) AS timedelta FROM user_sessions WHERE session = '{$session_id}'";

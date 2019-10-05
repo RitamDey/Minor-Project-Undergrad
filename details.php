@@ -4,7 +4,7 @@ require_once "templates/header.html.php";
 require_once "lib/sanitizers_validators.php";
 $connection->select_db("bookstore");
 
-$isbn = validateParameter($_GET["isbn"]);
+$isbn = validateISBN($_GET["isbn"]);
 $details_query = "SELECT isbn,name,detail,date_published,price,book_number,series,publisher,author,picture,total_pages FROM bookstore.book WHERE isbn = " . $isbn;
 
 $bookDetails = $connection->query($details_query);
@@ -20,20 +20,6 @@ $tags = $connection->query($tags_query);
 
 // TODO: Implement the validations of picture
 ?>
-<style>
-    .buy_now_button {
-	clear: both;
-	text-align: center;
-	display: block;
-	width: 100px;
-	padding: 4px 0 5px 0;
-	margin-bottom: 10px; 
-	background: url(/assets/images/buy_button.jpg) no-repeat;
-	color: #FFFFFF;
-	font-weight: bold;
-	text-decoration: none;
-}
-</style>
 <div id="content">
         <div id="content_left">
         	<div class="content_left_section">
@@ -64,7 +50,7 @@ $tags = $connection->query($tags_query);
                 <li>ISBN: <?php echo $book["isbn"]; ?></li>
                 <li>Price: Rs. <?php echo $book["price"]; ?>&Tab;</li>
             </ul>
-            <div class="buy_now_button">Add to cart</div>
+            <div class="buy_now_button"><a href="#">Add to cart</a></div>
             
             <?php echo $book["detail"]; ?>
             

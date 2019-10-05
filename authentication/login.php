@@ -1,7 +1,7 @@
 <?php
     require_once "lib/sanitizers_validators.php";
 
-    if (checkActiveSession($_COOKIE["PHPSESSID"])) {
+    if (isset($_COOKIE["PHPSESSID"]) && checkActiveSession($_COOKIE["PHPSESSID"])) {
         header("Location: /authentication/profile.php", true, 302);
         exit(0);
     }
