@@ -1,5 +1,5 @@
 <?php
-require "lib/sanitizers_validators.php";
+require_once "lib/sanitizers_validators.php";
 
 $connection = new mysqli("localhost", "bookstore", "bookstore");
 

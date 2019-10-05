@@ -200,7 +200,7 @@ img {
 /* end of footer */
 
 
-.loginbox{
+.loginbox {
     width: 350px;
     height: 500px;
     background:  #171716;
@@ -214,15 +214,15 @@ img {
     
 
 }
-.loginbox h1{
+.loginbox h1 {
     margin: auto;
     padding: 0 0 30px;
     font-family: serif;
-    font-size: 45px;
+    font-size: 35px;
     text-align: center;
 }
 
-.loginbox p{
+.loginbox p {
     font-family: Verdana;
     font-size: 20px;
     font-weight: bold;
