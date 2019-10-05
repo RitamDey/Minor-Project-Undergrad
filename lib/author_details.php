@@ -46,7 +46,7 @@ function getAuthorBooks($connection, $name) {
      * @var $name string := Name of the author to fetch the books
      */
     $name = santizeName($name);
-    $query = "SELECT isbn,name,picture FROM bookstore.book WHERE author = '{$name}';";
+    $query = "SELECT isbn,name,picture FROM bookstore.book WHERE author = '{$name}' ORDER BY date_published;";
 
     $result = $connection->query($query);
 

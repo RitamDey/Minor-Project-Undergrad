@@ -91,3 +91,21 @@ h1{
     font-size: 17px;
     width: 300px;
 }
+.signup input[type="file"] {
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background: transparent;
+    height: 50px;
+    color: black;
+    font-size: 17px;
+}
+.signup input[type="date"] {
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background: transparent;
+    height: 50px;
+    color: black;
+    font-size: 17px;
+}

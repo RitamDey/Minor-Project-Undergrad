@@ -1,18 +1,12 @@
 <?php
-require "database/database.php";
-require "lib/santizers_validators.php";
-
-$connection = getConnection();
-$tag = $_GET["tag"];
+    require_once "templates/header.html.php";
 ?>
-<html>
-<head>
-    <title> Book Store </title>
-</head>
 
-<body>
 <?php
-echo $tag;
+require "lib/sanitizers_validators.php";
+
+$tag = sanitizeName($_GET["tag"]);
+$TITLE=$tag;
 $tag_query = "SELECT name,description FROM bookstore.tag WHERE name = '{$tag}'";
 $book_query = "SELECT isbn,name,picture FROM bookstore.book WHERE isbn IN (SELECT isbn FROM bookstore.is_tagged WHERE tag = '{$tag}')";
 
@@ -37,6 +31,6 @@ while ($book = $books->fetch_assoc()) {
     echo "<li><a href='details.php?isbn={$book["isbn"]}'><img src='{$book["picture"]}' alt=''></a>{$book["name"]}</li>";
 }
 echo "</ul>";
+
+require_once "templates/footer.html.php"
 ?>
-</body>
-</html>

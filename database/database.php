@@ -17,25 +17,6 @@ function getConnection() {
 }
 
 
-function getBooks($connection) {
-	/**
-	 * Wrapper around the select statement to fetch all the books present in the database. Expects a single parameter:
-	 * @var $connection mysqli := Represents a connection to the MySQL database
-	 * Returns the result of the query if one or more rows are found,
-	 * Else returns -1, to signify no result
-	 */
-	$query = "SELECT isbn,name,publisher,author,picture FROM bookstore.book;";
-
-	$result = $connection->query($query);
-
-	if ($result->num_rows == 0) {
-		return -1;
-	}
-
-	return $result;
-}
-
-
 function getBy($connection, $attrib) {
 	/**
 	 * Wrapper around the SQL "GROUP BY" statement. Expects two parameters:

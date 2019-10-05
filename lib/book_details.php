@@ -15,7 +15,7 @@ function getDetails($connection, $isbn) {
     if (validateParameter($isbn) == false) {
         return -1;
     }
-    $query = "SELECT isbn,name,price,book_number,series,publisher,author,picture,genre,detail FROM bookstore.book WHERE isbn = " . $isbn;
+    $query = "SELECT isbn,name,price,book_number,series,publisher,author,picture,detail FROM bookstore.book WHERE isbn = " . $isbn;
 
     $result = $connection->query($query);
 

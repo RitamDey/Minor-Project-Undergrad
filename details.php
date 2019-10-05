@@ -34,11 +34,20 @@ if ($bookDeatils == -1)
                     ?>
                 </div>
 
+                <?php
+                if ($bookDeatils["series"] != null) {
+                    echo "<div class='book-series'>";
+                    echo "<a class='series' href='series.php?series={$bookDeatils["series"]}'>";
+                    echo "{$bookDeatils["series"]}</a> Book {$bookDeatils["book_number"]}";
+                    echo "</div>";
+                }
+                ?>
+
                 <div id="book-tags">
                     <?php
                     $tags = getTags($connection, $_GET["isbn"]);
                     foreach ($tags as $tag) {
-                        echo "<a href='tag/{$tag["tag"]}'>{$tag["tag"]}</a>&nbsp;";
+                        echo "<a href='tag.php?tag={$tag["tag"]}'>{$tag["tag"]}</a>&nbsp;";
                     }
                     ?>
                 </div>
