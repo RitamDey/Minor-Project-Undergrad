@@ -95,7 +95,7 @@ ALTER TABLE `bill`
 -- Constraints for table `bill`
 --
 ALTER TABLE `bill`
-  ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`billed_by`) REFERENCES `authentication`.`employee` (`id`),
+  ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`billed_by`) REFERENCES `administration`.`employee` (`id`),
   ADD CONSTRAINT `bill_ibfk_2` FOREIGN KEY (`billed_to`) REFERENCES `authentication`.`customer` (`id`);
 
 --

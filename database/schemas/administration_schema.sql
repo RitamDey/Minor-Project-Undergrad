@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 05, 2019 at 04:27 AM
+-- Generation Time: Oct 05, 2019 at 04:39 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -19,56 +19,50 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `authentication`
+-- Database: `administration`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Table structure for table `employee`
 --
--- Creation: Oct 04, 2019 at 11:28 PM
+-- Creation: Oct 05, 2019 at 02:38 AM
 --
 
-CREATE TABLE `customer` (
+CREATE TABLE `employee` (
   `id` bigint(20) NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `dob` date DEFAULT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
+  `name` varchar(100) NOT NULL,
+  `dob` date NOT NULL,
   `joined` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `phone` bigint(10) DEFAULT NULL,
+  `phone` bigint(10) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `address` varchar(500) DEFAULT NULL,
-  `pin` bigint(7) DEFAULT NULL,
+  `address` varchar(500) NOT NULL,
+  `pin` bigint(7) NOT NULL,
   `password` varchar(1000) NOT NULL,
   `picture` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- MIME TYPES FOR TABLE `customer`:
---   `picture`
---       `Image_JPEG`
+-- RELATIONSHIPS FOR TABLE `employee`:
 --
 
 --
--- RELATIONSHIPS FOR TABLE `customer`:
+-- Dumping data for table `employee`
 --
 
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`id`, `name`, `dob`, `joined`, `phone`, `email`, `address`, `pin`, `password`, `picture`) VALUES
-(6, NULL, NULL, '2019-10-05 04:59:12', NULL, 'admin@localhost', NULL, NULL, '$2y$11$wmQv1Ma9O0Hp5T3MouTW/OAXD.fhcZGOlsEvaxYpngEC2S1b2aV66', NULL),
-(7, NULL, NULL, '2019-10-05 05:10:17', NULL, 'stux@localhost.com', NULL, NULL, '$2y$11$Qck7mlARIxaY3mIEX87M0O7BRw/ApqTCmA.3.w82nmHMjkOHs8sSi', NULL);
+INSERT INTO `employee` (`id`, `is_admin`, `name`, `dob`, `joined`, `phone`, `email`, `address`, `pin`, `password`, `picture`) VALUES
+(2, 1, 'Ritam Dey', '1999-03-27', '2019-10-05 08:09:38', 8250504694, 'deyritam27031999@gmail.com', 'localhost', 713213, '$2y$11$p6CesRstEEA7tSDeR5OTKuVey985Tl1lEvvlqpfAnF9dBln/mIU3m', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `customer`
+-- Indexes for table `employee`
 --
-ALTER TABLE `customer`
+ALTER TABLE `employee`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `phone` (`phone`);
@@ -78,10 +72,10 @@ ALTER TABLE `customer`
 --
 
 --
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT for table `employee`
 --
-ALTER TABLE `customer`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `employee`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
