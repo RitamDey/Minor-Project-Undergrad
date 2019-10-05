@@ -1,5 +1,5 @@
 <?php
-function sanitizeName($name) {
+function sanitizeName(string $name): string {
     /**
      * Sanitizes the supplied tag from the $_GET get request variables
      * @var $name string := The name requested by the user.
@@ -33,11 +33,20 @@ function checkActiveSession(string $session_id): bool {
 
     if ($result->num_rows < 1)
         return false;
+    
+    $result = $result->fetch_assoc();
 
     // Convert the returned time difference to UNIX timestamp.
     $time_active = new DateTime($result["timedelta"]);
     $fifteen_days = new DateTime("15 days");
 
-    return $time_active < $fifteen_days;
+    if ($time_active < $fifteen_days)
+        return true;
+    else {
+        $query = "DELETE FROM user_sessions WHERE session='{$session_id}";
+        $connection->query($query);
+
+        return false;
+    }
 }
 ?>
