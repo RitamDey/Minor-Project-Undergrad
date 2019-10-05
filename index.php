@@ -1,12 +1,15 @@
 <?php
+    $TITLE = "Welcome -- Bookstore Inc";
     require_once "templates/header.html.php";
-    $TITLE = "Welcome to bookstore";
-    
+
     // Prevent showing mysql errors
     //error_reporting(0);
-    $query = "SELECT isbn,name,author,picture,price FROM bookstore.book";
+    $connection->select_db("bookstore");
+    
+    $query = "SELECT isbn,name,author,picture,price FROM book";
     if (isset($_GET["sort"]) && strcmp($_GET["sort"], "new-releases"))
         $query = $query . " ORDER BY ";
+    
     $books = $connection->query($query);
     $tags = null;
     $TITLE = "Welcome to the bookstore";
@@ -14,8 +17,7 @@
     if ($books->num_rows === 0) {
 	    echo "0 books found";
     } else {
-//        require_once "html/book.html.php";
-        $tag_query = "SELECT name FROM bookstore.tag";
+        $tag_query = "SELECT tag,COUNT(isbn) AS count FROM is_tagged GROUP BY tag ORDER BY count DESC LIMIT 6";
         $tags = $connection->query($tag_query);
     }
 ?>
@@ -24,15 +26,11 @@
         <div class="content_left_section">
             <h1>Categories</h1>
             <ul>
-                <li><a href="subpage.html">Donec accumsan urna</a></li>
-                <li><a href="subpage.html">Proin vulputate justo</a></li>
-                <li><a href="#">In sed risus ac feli</a></li>
-                <li><a href="#">Aliquam tristique dolor</a></li>
-                <li><a href="#">Maece nas metus</a></li>
-                <li><a href="#">Sed pellentesque placerat</a></li>
-                <li><a href="#">Suspen disse</a></li>
-                <li><a href="#">Maece nas metus</a></li>
-                <li><a href="#">In sed risus ac feli</a></li>
+                <?
+                    while ($tag = $tags->fetch_assoc()) {
+                        echo "<li><a href='tag.php?tag={$tag['tag']}'>{$tag['tag']}&nbsp;{$tag['count']}</a>";
+                    }
+                ?>
             </ul>
         </div>
         <div class="content_left_section">
