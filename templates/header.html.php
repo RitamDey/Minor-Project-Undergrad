@@ -1,5 +1,6 @@
 <?php
-session_start();
+require "lib/sanitizers_validators.php";
+
 $connection = new mysqli("localhost", "bookstore", "bookstore");
 
 if ($connection->get_connection_stats() === false) {
@@ -11,8 +12,6 @@ if ($connection->get_connection_stats() === false) {
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php echo $TITLE; ?></title>
-    <meta name="keywords" content="Book Store Template, Free CSS Template, CSS Website Layout, CSS, HTML" />
-    <meta name="description" content="Book Store Template, Free CSS Template, Download CSS Website" />
     <link href="/assets/css/common_style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -26,18 +25,17 @@ if ($connection->get_connection_stats() === false) {
             <li><a href="/index.php?sort=new-releases">New Releases</a></li>
             <li><a href="/about.php">About Us</a></li>
             <li><a href="/contact.php">Contact Us</a></li>
-
-            <li><a href="/authentication/signup.php">Sign Up</a></li>
+<?php
+if (checkActiveSession($_COOKIE["PHPSESSID"])) {
+    echo "<li><a href=\"/cart.php\">View Cart</a></li>";
+    echo "<li><a href=\"/authentication/profile.php\">Profile</a></li>";
+} else {
+    echo "<li><a href=\"/authentication/signup.php\">Sign Up</a></li>";
+    echo "<li><a href=\"/authentication/login.php\">Log In</a></li>";
+}
+?>
         </ul>
     </div> <!-- end of menu -->
 
     <div id="header">
-        <div id="new_books">
-            <ul>
-                <li>Suspen disse</li>
-                <li>Maece nas metus</li>
-                <li>In sed risus ac feli</li>
-            </ul>
-            <a href="subpage.html" style="margin-left: 50px;">Read more...</a>
-        </div>
     </div>
