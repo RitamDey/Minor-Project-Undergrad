@@ -2,8 +2,6 @@
     if (isset($connection) && $connection !== null) {
         $connection->close();
     }
-
-    session_destroy();
 ?>
 <div id="footer">
 
