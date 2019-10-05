@@ -16,4 +16,28 @@ function sanitizeEmail(string $email): string {
 
     return filter_var($email, FILTER_SANITIZE_EMAIL);
 }
+
+function sanitizePassword(string $password): string {
+    /**
+     * TODO
+     * Check if the password is of valid length and doesn't contains illegals
+     */
+    return $password;
+}
+
+function checkActiveSession(string $session_id): bool {
+    $connection = new mysqli("localhost", "bookstore", "bookstore", "authentication");
+    // If a session is present, it would return the active time in hh:mm:ss 
+    $query = "SELECT TIMEDIFF(NOW(), started) AS timedelta FROM user_sessions WHERE session = '{$session_id}'";
+    $result = $connection->query($query);
+
+    if ($result->num_rows < 1)
+        return false;
+
+    // Convert the returned time difference to UNIX timestamp.
+    $time_active = new DateTime($result["timedelta"]);
+    $fifteen_days = new DateTime("15 days");
+
+    return $time_active < $fifteen_days;
+}
 ?>
