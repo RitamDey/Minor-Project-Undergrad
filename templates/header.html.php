@@ -13,6 +13,7 @@ if ($connection->get_connection_stats() === false) {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php echo $TITLE; ?></title>
     <link href="/assets/css/common_style.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/795f6b8766.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -36,6 +37,14 @@ if (checkActiveSession($_COOKIE["PHPSESSID"])) {
 ?>
         </ul>
     </div> <!-- end of menu -->
+    
+    <br><br>
+
+    <div class="searchbox">
+        &nbsp;&nbsp;&nbsp;<input type="text" placeholder="Type To Search">
+        <a href="#"><i class="fas fa-search"></i></a>
+    </div>
+
 
     <div id="header">
     </div>
