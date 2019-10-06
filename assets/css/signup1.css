@@ -71,7 +71,7 @@ img {
 
 #container {
 	width: 960px;
-	height: 1100px;
+	height: 1500px;
 	margin: 0 auto;
 	padding: 0 10px;
 	background: #1c1c1b url(/templates/images/templatemo_bg.jpg) repeat-y;
@@ -182,7 +182,7 @@ img {
 	color: #999;
 	background-color: #111110;
 	position: relative;
-	bottom: -690px;	
+	bottom: -1090px;	
 }
 
 #footer a{
@@ -205,7 +205,7 @@ img {
     left: 39%;
     bottom: 30;
     position: absolute;
-    transform: translate(-3%,7%);
+    transform: translate(-3%,30%);
     box-sizing: border-box;
     border: 300px;
     
