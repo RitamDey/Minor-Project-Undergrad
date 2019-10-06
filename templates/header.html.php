@@ -20,8 +20,8 @@ if ($connection->get_connection_stats() === false) {
     <div id="menu">
         <ul>
             <li><a href="/" class="current">Home</a></li>
-            <li><a href="subpage.html">Search</a></li>
-            <li><a href="subpage.html">Books</a></li>
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Books</a></li>
             <li><a href="/index.php?sort=new-releases">New Releases</a></li>
             <li><a href="/about.php">About Us</a></li>
             <li><a href="/contact.php">Contact Us</a></li>
@@ -40,8 +40,10 @@ if (isset($_COOKIE["PHPSESSID"]) && checkActiveSession($_COOKIE["PHPSESSID"])) {
     <br><br>
 
     <div class="searchbox">
-        &nbsp;&nbsp;&nbsp;<input type="text" placeholder="Type To Search">
-        <a href="#"><i class="fas fa-search"></i></a>
+        <form action="/search.php?q=" method="GET">
+            &nbsp;&nbsp;&nbsp;<input type="text" placeholder="Type To Search">
+            <button><i class="fas fa-search"></i></button>
+        </form>
     </div>
 
 
