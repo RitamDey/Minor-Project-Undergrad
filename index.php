@@ -6,7 +6,7 @@
     //error_reporting(0);
     $connection->select_db("bookstore");
     
-    $query = "SELECT isbn,name,author,picture,price FROM book";
+    $query = "SELECT isbn,name,author,picture,price,detail FROM book";
     if (isset($_GET["sort"]) && strcmp($_GET["sort"], "new-releases"))
         $query = $query . " ORDER BY ";
     
@@ -53,9 +53,9 @@
         ?>
         <div class="product_box">
             <h1><?php echo $book["name"]; ?> <span>(by <?php echo $book["author"]; ?>)</span></h1>
-            <img src="<?php echo $book["picture"] ?>" alt="book picture" height="100px" width="100px"/>
+            <img src="<?php echo $book["picture"] ?>" alt="book picture" height="125px" width="100px"/>
             <div class="product_info">
-                <p>Aliquam a dui, ac magna quis est eleifend dictum.</p>
+                <p><?php echo substr($book["detail"], 0, 50); ?>...<a href="/details.php?isbn=<?php echo $book["isbn"]; ?>">More</a></p>
                 <div class="buy_now_button"><a href="/cart.php?add=<?php echo $book["isbn"] ?>">Buy Now - Rs <?php echo $book["price"]; ?></a></div>
                 <div class="detail_button"><a href="/details.php?isbn=<?php echo $book["isbn"]; ?>">Detail</a></div>
             </div>
