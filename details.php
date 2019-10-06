@@ -45,14 +45,17 @@ $tags = $connection->query($tags_query);
             <ul>
                 <li>By <a href="/author.php?name=<?php echo $book["author"]; ?>"><?php echo $book["author"]; ?></a></li>
                 <li>Published By: <?php echo $book["publisher"]; ?></li> 
-            	<li>Published: January 2024</li>
+                <li>Published: <?php
+                    echo (new DateTime($book["date_published"]))->format("d F Y")
+                ?></li>
                 <li>Pages: <?php echo $book["total_pages"]; ?></li>
                 <li>ISBN: <?php echo $book["isbn"]; ?></li>
                 <li>Price: Rs. <?php echo $book["price"]; ?>&Tab;</li>
             </ul>
+            <br/>
             <div class="buy_now_button"><a href="#">Add to cart</a></div>
             
-            <?php echo $book["detail"]; ?>
+            <?php echo htmlspecialchars($book["detail"], ENT_COMPAT | ENT_HTML401 | ENT_QUOTES | ENT_IGNORE); ?>
             
              <div class="cleaner_with_height">&nbsp;</div>
             
