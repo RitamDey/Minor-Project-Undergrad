@@ -21,7 +21,7 @@ $books = $connection->query($book_query);
 <div id="content">
     <h1><?php echo $tags["name"]; ?></h1>
     
-    <?php echo $tags["description"]; ?>
+    <?php echo htmlspecialchars($tags["description"], ENT_COMPAT | ENT_HTML401 | ENT_QUOTES | ENT_IGNORE); ?>
 
     <div class="cleaner_with_height">&nbsp;</div>
 
