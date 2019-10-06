@@ -40,7 +40,7 @@ $tags = $connection->query($tags_query);
             <div class="image_panel"><img src="<?php echo $book["picture"]; ?>" alt="Cover" width="100" height="150" /></div>
             <?php
             if ($book["series"])
-                echo "<h2>Book {$book["book_number"]} of <a href=\"\">{$book["series"]}</a></h2>";
+                echo "<h2>Book {$book["book_number"]} of <a href=\"/series.php?series={$book["series"]}\">{$book["series"]}</a></h2>";
             ?>
             <ul>
                 <li>By <a href="/author.php?name=<?php echo $book["author"]; ?>"><?php echo $book["author"]; ?></a></li>
