@@ -1,9 +1,14 @@
 <?php
+    require_once "lib/sanitizers_validators.php";
+
+    if (isset($_COOKIE["PHPSESSID"]) && checkActiveSession($_COOKIE["PHPSESSID"])) {
+        header("Location: /authentication/profile.php", true, 302);
+        die();
+    }
     // require_once "../templates/header.html.php";
     $connection = new mysqli("localhost", "bookstore", "bookstore");
     
     $connection->select_db("authentication"); 
-    require_once "lib/sanitizers_validators.php";
 
     if ($_SERVER["REQUEST_METHOD"] === "GET") {
         $TITLE = "Sign Up -- Bookstore Inc";
