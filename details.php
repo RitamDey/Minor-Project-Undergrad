@@ -53,7 +53,7 @@ $tags = $connection->query($tags_query);
                 <li>Price: Rs. <?php echo $book["price"]; ?>&Tab;</li>
             </ul>
             <br/>
-            <div class="buy_now_button"><a href="#">Add to cart</a></div>
+            <div class="buy_now_button" id="<?php echo $book["isbn"]; ?>"><a href="#">Add to cart</a></div>
             
             <?php echo htmlspecialchars($book["detail"], ENT_COMPAT | ENT_HTML401 | ENT_QUOTES | ENT_IGNORE); ?>
             
