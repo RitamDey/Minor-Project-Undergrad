@@ -1,4 +1,5 @@
 <?php
+require_once "lib/sanitizers_validators.php";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = $_POST["name"];
     $email = $_POST["email"];
@@ -27,9 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <li><a href="/index.php?sort=new-releases">New Releases</a></li>  
             <li><a href="/about.php">About Us</a></li> 
             <li><a href="/contact.php">Contact Us</a></li>
-            <li><a href="../html/login1.html" class="current">Login</a></li>
-            <li><a href="../html/signup1.html">Signup</a></li>
-    	</ul>
+<?php
+if (isset($_COOKIE["PHPSESSID"]) && checkActiveSession($_COOKIE["PHPSESSID"])) {
+    echo "<li><a href=\"/cart.php\">View Cart</a></li>";
+    echo "<li><a href=\"/authentication/profile.php\">Profile</a></li>";
+} else {
+    echo "<li><a href=\"/authentication/signup.php\">Sign Up</a></li>";
+    echo "<li><a href=\"/authentication/login.php\">Log In</a></li>";
+}
+?>
+        </ul>
     </div> <!-- end of menu -->
     
     <div id="header">
