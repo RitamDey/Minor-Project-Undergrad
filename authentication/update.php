@@ -19,8 +19,8 @@
         die();
     } else {
         // Else process the submitted data
-        var_dump($_POST);
-        echo "<br/>";
+        //var_dump($_POST);
+        //echo "<br/>";
 
         if ($_POST["update-type"] === "password-update") {
             // Handles the updates to user's password
@@ -54,37 +54,41 @@
 
             if ($_POST["phone"]) {
                 $phone_query = "UPDATE customer SET phone = {$_POST["phone"]} WHERE customer.id = {$user_id["user"]}";
-                echo $phone_query;
+                
+                $connection->query($phone_query);
             }
 
             if ($_POST["dob"]) {
                 $dob_query = "UPDATE customer SET dob = {$_POST["dob"]} WHERE customer.id = {$user_id["user"]}";
-                echo $dob_query;
+                
+                $connection->query($dob_query);
             }
 
             if ($_POST["email"]) {
                 // Santize the email for possible bad input
                 $email = sanitizeEmail($_POST["email"]);
                 $email_query = "UPDATE customer SET email = \"{$email}\" WHERE customer.id = {$user_id["user"]}";
-                echo "</br>" . $email_query;
+                
+                $connection->query($email_query);
             }
 
             if ($_POST["address"]) {
                 $address_query = "UPDATE customer SET address = \"{$_POST["address"]}\" WHERE customer.id = {$user_id["user"]}";
-                echo "</br>" . $address_query;
-
+                
+                $connection->query($address_query);
             }
 
             if ($_POST["pincode"]) {
                 $pincode_query = "UPDATE customer SET pincode = \"{$_POST["pincode"]}\" WHERE customer.id = {$user_id["user"]}";
-                echo "</br>" . $pincode_query;
+                
+                $connection->query($pincode_query);
             }
 
             if ($_POST["picture"]) {
                 $picture = validatePicture($_POST["picture"]);
                 $picture_query = "UPDATE customer SET picture = \"{$picture}\" WHERE customer.id = {$user_id["user"]}";
 
-                echo $picture_query;
+                $connection->query($picture_query);
             }
 
             header("Location: /authentication/profile.php", true, 302);
