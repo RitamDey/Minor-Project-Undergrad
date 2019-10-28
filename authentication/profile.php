@@ -5,6 +5,7 @@
     $connection = new mysqli("localhost", "bookstore", "bookstore");
 
     if (isset($_GET["name"])) {
+        // TODO: Let user view other users
         // Display the profile of the said user
         $name = santizeName($_GET["name"]);
         require_once "display_profile.php";
