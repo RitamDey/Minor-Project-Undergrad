@@ -4,16 +4,20 @@
     $connection->select_db("bookstore");
 
     $books = explode(",", $_COOKIE["cart"]);
-    $query = "SELECT name,price FROM book WHERE isbn=";
+    $book = null;
+    $name = null;
+    $price = null;
+
+    $query = $connection->prepare("SELECT name,price FROM book WHERE isbn=?");
+    $query->bind_param("i", $book);
+    $query->bind_result($name, $price);
+ 
     foreach($books as $book) {
         if (!$book)
             continue;
-        $book = $connection->query($query . $book);
-        if (!$book)
-            continue;
 
-        $book = $book->fetch_assoc();
-
+        $query->execute();
+        $book = $query->fetch();;
 ?>
 
 <table>
@@ -24,14 +28,13 @@
     </tr>
 <?php
     echo "<tr>";
-    echo "<td>{$book["name"]}</td>";
-    echo "<td>{$book["price"]}</td>";
+    echo "<td>{$name}</td>";
+    echo "<td>{$price}</td>";
     echo "</tr>";
 ?>
 </table>
 <button><a href="/buy.php">Buy Now</a></button>
 <?php
     }
-    
     require_once "templates/footer.html.php";
 ?>
