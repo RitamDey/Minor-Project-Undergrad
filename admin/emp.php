@@ -23,8 +23,8 @@ else
 	Book store management
 </title>
 <head>
-<link rel="stylesheet" href="image.css">
-<link rel="stylesheet" href="emp.css">
+<link rel="stylesheet" href="../image.css">
+<link rel="stylesheet" href="/assets/css/emp.css">
 	<h1>Welcome To ABC BookStore Admin Panel</h1>
 	<hr size="5" color="red"></hr>
 </head>
@@ -33,14 +33,14 @@ else
 
         
         
-        &nbsp &nbsp &nbsp &nbsp<a href="sign.html">SignIn</a> &nbsp &nbsp
+        &nbsp &nbsp &nbsp &nbsp<a href="signout.php">Sign Out</a> &nbsp &nbsp
 		
 		
 	</div>
 	<div class="menu">
 			<ul>
 				<li><a href="employee.html">Employee Details</a></li>
-				<li><a href="about.html">Transaction Details</a></li>
+				<li><a href="transaction.php">Transaction Details</a></li>
 				<li><a href="product.html">Status of Stock</a>
 					<ul>
 						<li><a href="storybook.html">Story Book</a></li>
@@ -81,9 +81,9 @@ while($row=mysqli_fetch_assoc($result))
 ?>
 
 </table>
-&nbsp &nbsp &nbsp<a href="update.php">Update Table</a>
-&nbsp &nbsp &nbsp<a href="insert.php">Insert Table</a>
-&nbsp &nbsp &nbsp<a href="delete.php">Delete Table</a>
+&nbsp &nbsp &nbsp<a href="update.html">Update Table</a>
+&nbsp &nbsp &nbsp<a href="insert.html">Insert Table</a>
+&nbsp &nbsp &nbsp<a href="delete.html">Delete Table</a>
 </div>
 </body>
 </html>
