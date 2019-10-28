@@ -6,19 +6,21 @@
     //error_reporting(0);
     $connection->select_db("bookstore");
     
-    $query = "SELECT isbn,name,author,picture,price FROM book";
-    if (isset($_GET["sort"]) && strcmp($_GET["sort"], "new-releases"))
-        $query = $query . " ORDER BY ";
+    $query = "SELECT isbn,name,author,picture,price,detail FROM book";
+    if (isset($_GET["new-releases"]))
+        $query = $query . " ORDER BY date_added DESC";
     
     $books = $connection->query($query);
     $tags = null;
-    $TITLE = "Welcome to the bookstore";
 
     if ($books->num_rows === 0) {
 	    echo "0 books found";
     } else {
         $tag_query = "SELECT tag,COUNT(isbn) AS count FROM is_tagged GROUP BY tag ORDER BY count DESC LIMIT 6";
         $tags = $connection->query($tag_query);
+
+        $bestseller_query = "SELECT book, COUNT(book) AS count FROM sales.books_bill GROUP BY book ORDER BY count DESC LIMIT 6";
+        $bestsellers = $connection->query($bestseller_query);
     }
 ?>
 <div id="content">
@@ -28,7 +30,7 @@
             <ul>
                 <?
                     while ($tag = $tags->fetch_assoc()) {
-                        echo "<li><a href='tag.php?tag={$tag['tag']}'>{$tag['tag']}&nbsp;{$tag['count']}</a>";
+                        echo "<li><a href='tag.php?tag={$tag['tag']}'>{$tag['tag']}</a>";
                     }
                 ?>
             </ul>
@@ -36,12 +38,21 @@
         <div class="content_left_section">
             <h1>Bestsellers</h1>
             <ul>
-                <li><a href="#">Vestibulum ullamcorper</a></li>
-                <li><a href="#">Maece nas metus</a></li>
-                <li><a href="#">In sed risus ac feli</a></li>
-                <li><a href="#">Praesent mattis varius</a></li>
-                <li><a href="#">Maece nas metus</a></li>
-                <li><a href="#">In sed risus ac feli</a></li>
+            <?php
+                $isbn = null;
+                $bestseller_name = null;
+                $book_query = $connection->prepare("SELECT name FROM book WHERE isbn = ?");
+                $book_query->bind_param("i", $isbn);
+                $book_query->bind_result($bestseller_name);
+                
+                while ($bestseller = $bestsellers->fetch_assoc()) {
+                    $isbn = $bestseller["book"];
+                    $book_query->execute();
+                    $book_query->fetch();
+                    
+                    echo "<li><a href='details.php?isbn={$isbn}'>{$bestseller_name}</a></li>";
+                }
+            ?>
             </ul>
         </div>
     </div> <!-- end of content left -->
@@ -53,10 +64,10 @@
         ?>
         <div class="product_box">
             <h1><?php echo $book["name"]; ?> <span>(by <?php echo $book["author"]; ?>)</span></h1>
-            <img src="<?php echo $book["picture"] ?>" alt="book picture" height="100px" width="100px"/>
+            <img src="<?php echo $book["picture"] ?>" alt="book picture" height="125px" width="100px"/>
             <div class="product_info">
-                <p>Aliquam a dui, ac magna quis est eleifend dictum.</p>
-                <div class="buy_now_button"><a href="/cart.php?add=<?php echo $book["isbn"] ?>">Buy Now - Rs <?php echo $book["price"]; ?></a></div>
+                <p><?php echo substr($book["detail"], 0, 50); ?>...<a href="/details.php?isbn=<?php echo $book["isbn"]; ?>">More</a></p>
+                <div class="buy_now_button" id="<?php echo $book["isbn"]; ?>"><a href="#">Buy Now - Rs <?php echo $book["price"]; ?></a></div>
                 <div class="detail_button"><a href="/details.php?isbn=<?php echo $book["isbn"]; ?>">Detail</a></div>
             </div>
             <div class="cleaner">&nbsp;</div>

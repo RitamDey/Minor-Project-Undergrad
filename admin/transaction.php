@@ -1,31 +1,18 @@
 <?php
-
-$eid=$_POST['eid'];
 $connect=mysqli_connect("localhost","root","","saptarshi") or mysqli_error();
-echo "Connection successful";
+
 echo "<br>";
-if($eid=="*")
-{
-    $result=mysqli_query($connect, "select * from amp");
-}
-else
-{
-    $result=mysqli_query($connect, "select * from amp where (emp_id='$eid')");
-}
+
+    $result=mysqli_query($connect, "select * from books_bill");
 
 ?>
-
-
-
-
-<html>
 <title>
-	Book store management
+	Trnsaction History
 </title>
 <head>
 <link rel="stylesheet" href="../image.css">
 <link rel="stylesheet" href="/assets/css/emp.css">
-	<h1>Welcome To ABC BookStore Admin Panel</h1>
+	<h1>Transacion Hisory&nbsp</h1>
 	<hr size="5" color="red"></hr>
 </head>
 <body>
@@ -33,7 +20,8 @@ else
 
         
         
-        &nbsp &nbsp &nbsp &nbsp<a href="signout.php">Sign Out</a> &nbsp &nbsp
+        
+    &nbsp &nbsp &nbsp &nbsp<a href="signout.php">Sign Out</a> &nbsp &nbsp
 		
 		
 	</div>
@@ -56,11 +44,10 @@ else
     <br>
   <div class="loginbox">
     <table>
-            <th><P>Employee ID</P></th>
-            <th><p>Employee Name</P></th>
-            <th><P>Salary</P></th>
-            <th><P>Date of Join</P></th>
-            <th><P>Depertment</P></th>
+            <th><P>Bill ID</P></th>
+            <th><p>Book ID</P></th>
+            <th><P>Quantity</P></th>
+           
             
 <?php
 while($row=mysqli_fetch_assoc($result))
@@ -68,11 +55,10 @@ while($row=mysqli_fetch_assoc($result))
     echo "<tr>";
     
     
-    echo "<td>"."<p>".$row['emp_id']."</P>"."</td>";
-    echo "<td>"."<p>".$row['emp_name']."</P>"."</td>";
-    echo "<td>"."<p>".$row['salary']."</P>"."</td>";
-    echo "<td>"."<p>".$row['doj']."</P>"."</td>";
-    echo "<td>"."<p>".$row['dept']."</P>"."</td>";
+    echo "<td>"."<p>".$row['bill_id']."</P>"."</td>";
+    echo "<td>"."<p>".$row['book']."</P>"."</td>";
+    echo "<td>"."<p>".$row['quantity']."</P>"."</td>";
+    
     
     echo "</tr>";
     
@@ -81,9 +67,6 @@ while($row=mysqli_fetch_assoc($result))
 ?>
 
 </table>
-&nbsp &nbsp &nbsp<a href="update.html">Update Table</a>
-&nbsp &nbsp &nbsp<a href="insert.html">Insert Table</a>
-&nbsp &nbsp &nbsp<a href="delete.html">Delete Table</a>
 </div>
 </body>
-</html>
+</html> 

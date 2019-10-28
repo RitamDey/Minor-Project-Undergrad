@@ -15,7 +15,7 @@
             <li><a href="/index.php?sort=new-releases">New Releases</a></li>  
             <li><a href="/about.php">About Us</a></li> 
             <li><a href="/contact.php">Contact Us</a></li>
-            <li><a href="/contact.php">Login</a></li>
+            <li><a href="/authentication/login.php">Login</a></li>
             <li><a href="#" class="current">Signup</a></li>
     	</ul>
     </div> <!-- end of menu -->
@@ -31,7 +31,7 @@
 
         
         <div class="signup">
-            <h1 align="center">Signup Here</h1><br>
+            <h1 align="center">Quick Signup</h1><br>
             <form name="signup" method="POST" action="<?php echo $_SERVER["PHP_SELF"] // PHP_SELF refers to the current page?>">
                <label for="email">Email</p>
                 <input type="email" name="email" id="email" placeholder="Enter your email address" required><br>
@@ -42,10 +42,9 @@
                
                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value="submit"> <br>
                <br>
-               <br>Already have an account&nbsp;<a href="/authentication/login.php">Login</a>
-
            </form>
         </div>
+        <br>Already have an account&nbsp;<a href="/authentication/login.php">Login</a>
         </div> <!-- end of content -->
    
     <div id="footer">

@@ -1,5 +1,5 @@
 <?php
-require "lib/sanitizers_validators.php";
+require_once "lib/sanitizers_validators.php";
 
 $connection = new mysqli("localhost", "bookstore", "bookstore");
 
@@ -20,13 +20,13 @@ if ($connection->get_connection_stats() === false) {
     <div id="menu">
         <ul>
             <li><a href="/" class="current">Home</a></li>
-            <li><a href="subpage.html">Search</a></li>
-            <li><a href="subpage.html">Books</a></li>
-            <li><a href="/index.php?sort=new-releases">New Releases</a></li>
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Books</a></li>
+            <li><a href="/index.php?new-releases">New Releases</a></li>
             <li><a href="/about.php">About Us</a></li>
             <li><a href="/contact.php">Contact Us</a></li>
 <?php
-if (checkActiveSession($_COOKIE["PHPSESSID"])) {
+if (isset($_COOKIE["PHPSESSID"]) && checkActiveSession($_COOKIE["PHPSESSID"])) {
     echo "<li><a href=\"/cart.php\">View Cart</a></li>";
     echo "<li><a href=\"/authentication/profile.php\">Profile</a></li>";
 } else {
@@ -36,6 +36,16 @@ if (checkActiveSession($_COOKIE["PHPSESSID"])) {
 ?>
         </ul>
     </div> <!-- end of menu -->
+    
+    <br><br>
+
+    <div class="searchbox">
+        <form action="/search.php?q=" method="GET">
+            &nbsp;&nbsp;&nbsp;<input type="text" placeholder="Type To Search">
+            <button><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
 
     <div id="header">
     </div>

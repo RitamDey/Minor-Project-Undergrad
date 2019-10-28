@@ -203,12 +203,12 @@ img {
 .loginbox{
     width: 350px;
     height: 500px;
-    background:  #171716;
+    background:#171716;
     color: azure;
     top: 50%;
     left: 47%;
     position: absolute;
-    transform: translate(-30% , -40% );
+    transform: translate(-30% , -10% );
     box-sizing: border-box;
     padding: 70px 30px;
     
@@ -218,7 +218,7 @@ img {
     margin: auto;
     padding: 0 0 30px;
     font-family: serif;
-    font-size: 45px;
+    font-size: 50px;
     text-align: center;
 }
 

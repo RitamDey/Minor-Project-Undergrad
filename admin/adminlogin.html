@@ -1,0 +1,102 @@
+<head>
+<title>Admin Login</title>
+<script>
+    function myFunction() {
+      alert("Please Contact Developer");
+    }
+    </script>
+<style>
+header
+{
+padding: 1em;
+color:white;
+background-color:#0f284d;
+clear:left;
+text-align:center;
+}
+nav{
+max-width:300px;
+margin:0;
+padding:1em;
+}
+
+body {
+    font-family: tahoma, helvetica, arial, sans-serif;
+    font-size: 12px;
+    
+    background: rgb(40, 50, 78);
+    color: #ddd4d4;
+    padding-top: 12px;
+    line-height: 2;
+    background-image: url('back.jpg');
+	
+    background-size: 100%;
+    
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4Db0E6;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+input[type=submit]:hover {
+    background-color: #45b67f;
+}
+
+input[type=submit]:hover {
+    background-color: #45b67f;
+	
+
+}
+
+</style>
+</head>
+<body>
+
+<header><h1>ADMIN LOGIN</h1></header>
+<nav>
+<form action=adminlogincheck.php method=post>
+ADMIN ID
+<input type=text name=id>
+
+Password
+<input type=password name=pwd>
+<br><br>
+<input type=submit value=Login>
+<p align=right><a href="#" onclick="myFunction()"><font color=WHITE>Forgot Password?</a></p>
+</form>
+</nav>
+</body>
+
+
+<footer class="w3-container w3-padding-32 w3-center">
+  <p>Powered by <strong>Saptarshi</strong></p>
+  Copyright &copy; Book Store Service, Inc. No rights reserved
+  <br>PS: This is not an official website. This is made for project purpose.
+</footer>
