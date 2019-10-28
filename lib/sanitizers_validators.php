@@ -7,7 +7,7 @@ function sanitizeName(string $name): string {
     return $name;
 }
 
-function validatePicture($url) {
+function validatePicture(string $url) {
     // TODO: Check if the fetched resource is a image or not
     return filter_var($url, FILTER_VALIDATE_URL);
 }
