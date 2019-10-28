@@ -22,7 +22,7 @@ if ($connection->get_connection_stats() === false) {
             <li><a href="/" class="current">Home</a></li>
             <li><a href="#">Search</a></li>
             <li><a href="#">Books</a></li>
-            <li><a href="/index.php?sort=new-releases">New Releases</a></li>
+            <li><a href="/index.php?new-releases">New Releases</a></li>
             <li><a href="/about.php">About Us</a></li>
             <li><a href="/contact.php">Contact Us</a></li>
 <?php

@@ -7,18 +7,20 @@
     $connection->select_db("bookstore");
     
     $query = "SELECT isbn,name,author,picture,price,detail FROM book";
-    if (isset($_GET["sort"]) && strcmp($_GET["sort"], "new-releases"))
-        $query = $query . " ORDER BY ";
+    if (isset($_GET["new-releases"]))
+        $query = $query . " ORDER BY date_added DESC";
     
     $books = $connection->query($query);
     $tags = null;
-    $TITLE = "Welcome to the bookstore";
 
     if ($books->num_rows === 0) {
 	    echo "0 books found";
     } else {
         $tag_query = "SELECT tag,COUNT(isbn) AS count FROM is_tagged GROUP BY tag ORDER BY count DESC LIMIT 6";
         $tags = $connection->query($tag_query);
+
+        $bestseller_query = "SELECT book, COUNT(book) AS count FROM sales.books_bill GROUP BY book ORDER BY count DESC LIMIT 6";
+        $bestsellers = $connection->query($bestseller_query);
     }
 ?>
 <div id="content">
