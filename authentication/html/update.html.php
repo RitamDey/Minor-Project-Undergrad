@@ -35,7 +35,7 @@
                 <p>Pin</p>
                 <input type="number" name="pincode" placeholder="Enter your area pincode" >
                 <p>Picture</p>
-                <input type="file" name="Pic" placeholder="Drop Your Picture Here" ><br>
+                <input type="file" name="picture" placeholder="Drop Your Picture Here" ><br>
                  <input type="hidden" name="update-type" value="details-update">
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value="submit"> <br>
 
