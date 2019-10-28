@@ -30,7 +30,7 @@
             <ul>
                 <?
                     while ($tag = $tags->fetch_assoc()) {
-                        echo "<li><a href='tag.php?tag={$tag['tag']}'>{$tag['tag']}&nbsp;{$tag['count']}</a>";
+                        echo "<li><a href='tag.php?tag={$tag['tag']}'>{$tag['tag']}</a>";
                     }
                 ?>
             </ul>
@@ -38,12 +38,21 @@
         <div class="content_left_section">
             <h1>Bestsellers</h1>
             <ul>
-                <li><a href="#">Vestibulum ullamcorper</a></li>
-                <li><a href="#">Maece nas metus</a></li>
-                <li><a href="#">In sed risus ac feli</a></li>
-                <li><a href="#">Praesent mattis varius</a></li>
-                <li><a href="#">Maece nas metus</a></li>
-                <li><a href="#">In sed risus ac feli</a></li>
+            <?php
+                $isbn = null;
+                $bestseller_name = null;
+                $book_query = $connection->prepare("SELECT name FROM book WHERE isbn = ?");
+                $book_query->bind_param("i", $isbn);
+                $book_query->bind_result($bestseller_name);
+                
+                while ($bestseller = $bestsellers->fetch_assoc()) {
+                    $isbn = $bestseller["book"];
+                    $book_query->execute();
+                    $book_query->fetch();
+                    
+                    echo "<li><a href='details.php?isbn={$isbn}'>{$bestseller_name}</a></li>";
+                }
+            ?>
             </ul>
         </div>
     </div> <!-- end of content left -->
