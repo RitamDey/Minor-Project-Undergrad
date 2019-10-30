@@ -3,15 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 05, 2019 at 04:27 AM
+-- Generation Time: Oct 29, 2019 at 09:36 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+00:00";
-
+SET time_zone = "+05:30";
+USE `authentication`;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `customer`
 --
--- Creation: Oct 04, 2019 at 11:28 PM
+-- Creation: Oct 05, 2019 at 04:49 AM
 --
 
 CREATE TABLE `customer` (
@@ -40,7 +40,7 @@ CREATE TABLE `customer` (
   `address` varchar(500) DEFAULT NULL,
   `pin` bigint(7) DEFAULT NULL,
   `password` varchar(1000) NOT NULL,
-  `picture` varchar(100) DEFAULT NULL
+  `picture` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -49,18 +49,25 @@ CREATE TABLE `customer` (
 --       `Image_JPEG`
 --
 
---
--- RELATIONSHIPS FOR TABLE `customer`:
---
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `customer`
+-- Table structure for table `user_sessions`
+--
+-- Creation: Oct 05, 2019 at 03:59 AM
 --
 
-INSERT INTO `customer` (`id`, `name`, `dob`, `joined`, `phone`, `email`, `address`, `pin`, `password`, `picture`) VALUES
-(6, NULL, NULL, '2019-10-05 04:59:12', NULL, 'admin@localhost', NULL, NULL, '$2y$11$wmQv1Ma9O0Hp5T3MouTW/OAXD.fhcZGOlsEvaxYpngEC2S1b2aV66', NULL),
-(7, NULL, NULL, '2019-10-05 05:10:17', NULL, 'stux@localhost.com', NULL, NULL, '$2y$11$Qck7mlARIxaY3mIEX87M0O7BRw/ApqTCmA.3.w82nmHMjkOHs8sSi', NULL);
+CREATE TABLE `user_sessions` (
+  `session` varchar(100) NOT NULL,
+  `user` bigint(20) NOT NULL,
+  `started` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- RELATIONSHIPS FOR TABLE `user_sessions`:
+--   `user`
+--       `customer` -> `id`
+--
 --
 -- Indexes for dumped tables
 --
@@ -74,6 +81,13 @@ ALTER TABLE `customer`
   ADD UNIQUE KEY `phone` (`phone`);
 
 --
+-- Indexes for table `user_sessions`
+--
+ALTER TABLE `user_sessions`
+  ADD PRIMARY KEY (`session`),
+  ADD KEY `user` (`user`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -81,7 +95,17 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `user_sessions`
+--
+ALTER TABLE `user_sessions`
+  ADD CONSTRAINT `user_sessions_ibfk_1` FOREIGN KEY (`user`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
