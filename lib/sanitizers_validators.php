@@ -67,9 +67,12 @@ function checkActiveSession(?string $session_id): bool {
     if ($time_now < $five_days)
         return true;
     else {
-        $query = "DELETE FROM user_sessions WHERE session='{$session_id}";
-        $connection->query($query);
-
+        // Use mysqli prepared statments to have a protection against SQL Injection
+        $delete_query = $connection->prepare("DELETE FROM user_sessions WHERE session=?");
+        $delete_query->bind_param("s", $session_id);
+        $delete_query->execute();
+        
+        $delete_query->close();
         return false;
     }
 }
