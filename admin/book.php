@@ -3,8 +3,8 @@
 	Book store management
 </title>
 <head>
-<link rel="stylesheet" href="../image.css">
-	<h1>Welcome To ABC BookStore Admin Panel</h1>
+<link rel="stylesheet" href="/admin/assets/css/image.css">
+	<h1>Welcome To BookStore Inc Admin Panel</h1>
 	<hr size="5" color="red"></hr>
 </head>
 <?php

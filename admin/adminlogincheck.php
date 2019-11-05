@@ -44,7 +44,7 @@ text-align:center;
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "thisistux";
+$password = "";
 $dbname = "saptarshi";
 session_start();
 // Create connection
