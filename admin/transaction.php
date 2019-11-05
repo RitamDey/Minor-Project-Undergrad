@@ -26,7 +26,7 @@ echo "<br>";
 	</div>
 	<div class="menu">
 			<ul>
-				<li><a href="employee.html">Employee Details</a></li>
+				<li><a href="employee.html">Customer Details</a></li>
 				<li><a href="transaction.php">Transaction Details</a></li>
 				<li><a href="product.html">Status of Stock</a>
 					<ul>
