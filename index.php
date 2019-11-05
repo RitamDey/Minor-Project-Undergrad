@@ -28,7 +28,7 @@
         <div class="content_left_section">
             <h1>Categories</h1>
             <ul>
-                <?
+                <?php
                     while ($tag = $tags->fetch_assoc()) {
                         echo "<li><a href='tag.php?tag={$tag['tag']}'>{$tag['tag']}</a>";
                     }
