@@ -9,6 +9,12 @@
         die();
     }
 
+    /**
+     * Prevent browser from caching this page.
+     * no-store: Says the browser not to cache the response at all
+    **/
+    header("Cache-Control: no-store");
+
     $session = $_COOKIE["PHPSESSID"];
     $user_id = null;
 
