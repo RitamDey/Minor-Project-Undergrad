@@ -26,6 +26,9 @@
 
         $bill_query = "SELECT id,time FROM sales.bill WHERE billed_to = {$user_id}";
         $bills = $connection->query($bill_query);
+        
+        $TITLE = "{$user["name"]} -- Bookstore Inc";
+        require_once "templates/header.html.php";
 
     }
 ?>
@@ -70,4 +73,6 @@
         echo "<tr><td></td><td>Total Amount</td><td>{$total}</td></tr>";
         echo "</table>";
     }
+
+    require_once "templates/footer.html.php";
 ?>
