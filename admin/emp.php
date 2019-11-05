@@ -1,16 +1,16 @@
 <?php
 
 $eid=$_POST['eid'];
-$connect=mysqli_connect("localhost","root","","saptarshi") or mysqli_error();
+$connect=mysqli_connect("localhost","root","","authentication") or mysqli_error();
 echo "Connection successful";
 echo "<br>";
 if($eid=="*")
 {
-    $result=mysqli_query($connect, "select * from amp");
+    $result=mysqli_query($connect, "select * from customer");
 }
 else
 {
-    $result=mysqli_query($connect, "select * from amp where (emp_id='$eid')");
+    $result=mysqli_query($connect, "select * from customer where (id='$eid')");
 }
 
 ?>
@@ -56,11 +56,14 @@ else
     <br>
   <div class="loginbox">
     <table>
-            <th><P>Employee ID</P></th>
-            <th><p>Employee Name</P></th>
-            <th><P>Salary</P></th>
+            <th><P>ID</P></th>
+            <th><p>Name</P></th>
+            <th><P>Dob</P></th>
             <th><P>Date of Join</P></th>
-            <th><P>Depertment</P></th>
+			<th><P>Phone</P></th>
+			<th><P>Email</P></th>
+			<th><P>Address</P></th>
+			<th><P>Pin</P></th>
             
 <?php
 while($row=mysqli_fetch_assoc($result))
@@ -68,11 +71,14 @@ while($row=mysqli_fetch_assoc($result))
     echo "<tr>";
     
     
-    echo "<td>"."<p>".$row['emp_id']."</P>"."</td>";
-    echo "<td>"."<p>".$row['emp_name']."</P>"."</td>";
-    echo "<td>"."<p>".$row['salary']."</P>"."</td>";
-    echo "<td>"."<p>".$row['doj']."</P>"."</td>";
-    echo "<td>"."<p>".$row['dept']."</P>"."</td>";
+    echo "<td>"."<p>".$row['id']."</P>"."</td>";
+    echo "<td>"."<p>".$row['name']."</P>"."</td>";
+    echo "<td>"."<p>".$row['dob']."</P>"."</td>";
+    echo "<td>"."<p>".$row['joined']."</P>"."</td>";
+	echo "<td>"."<p>".$row['phone']."</P>"."</td>";
+	echo "<td>"."<p>".$row['email']."</P>"."</td>";
+	echo "<td>"."<p>".$row['address']."</P>"."</td>";
+	echo "<td>"."<p>".$row['pin']."</P>"."</td>";
     
     echo "</tr>";
     

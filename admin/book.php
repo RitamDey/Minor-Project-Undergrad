@@ -3,7 +3,8 @@
 	Book store management
 </title>
 <head>
-<link rel="stylesheet" href="/admin/assets/css/image.css">
+<link rel="stylesheet" href="/admin/assets/image.css">
+<link rel="stylesheet" href="/admin/assets/admin.css">
 	<h1>Welcome To BookStore Inc Admin Panel</h1>
 	<hr size="5" color="red"></hr>
 </head>
