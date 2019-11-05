@@ -23,7 +23,7 @@ else
 	Book store management
 </title>
 <head>
-<link rel="stylesheet" href="../image.css">
+<link rel="stylesheet" href="/admin/assets/image.css">
 <link rel="stylesheet" href="/assets/css/emp.css">
 	<h1>Welcome To ABC BookStore Admin Panel</h1>
 	<hr size="5" color="red"></hr>
