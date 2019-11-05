@@ -4,8 +4,9 @@
     require_once "templates/header.html.php";
     $connection->select_db("authentication");
 
-    if (checkActiveSession($_COOKIE["PHPSESSID"] === false)) {
+    if (checkActiveSession($_COOKIE["PHPSESSID"]) === false) {
         header("Location: /authentication/login.php", true, 302);
+        die();
     }
 
     $session = $_COOKIE["PHPSESSID"];
