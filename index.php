@@ -67,7 +67,7 @@
             <img src="<?php echo $book["picture"] ?>" alt="book picture" height="125px" width="100px"/>
             <div class="product_info">
                 <p><?php echo substr($book["detail"], 0, 50); ?>...<a href="/details.php?isbn=<?php echo $book["isbn"]; ?>">More</a></p>
-                <div class="buy_now_button" id="<?php echo $book["isbn"]; ?>"><a href="#">Buy Now - Rs <?php echo $book["price"]; ?></a></div>
+                <div class="buy_now_button" id="<?php echo $book["isbn"]; ?>"><a href="/cart.php?book=<?php echo $book["isbn"]; ?>">Add to cart - Rs <?php echo $book["price"]; ?></a></div>
                 <div class="detail_button"><a href="/details.php?isbn=<?php echo $book["isbn"]; ?>">Detail</a></div>
             </div>
             <div class="cleaner">&nbsp;</div>
