@@ -68,10 +68,12 @@
         echo "<td>{$book_name}</td>";
         echo "<td>{$quantity}</td>";
         echo "<td>{$price}</td>";
+        echo "<td><button><a href=\"/cart.php?book={$isbn}\">Add one more</a></button></td>";
         echo "</tr>";
     }
 ?>
 </table>
+<button><a href="/buy.php">Buy Now!</a></button>
 <?php
     $book_query->close();
     require_once "templates/footer.html.php";
