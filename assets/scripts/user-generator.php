@@ -29,15 +29,15 @@
         </tr>
         <tr>
             <td><label for="dob">Date of Birth: </label></td>
-            <td><input id="dob" name="dob" type="date"</td>
+            <td><input id="dob" name="dob" type="date"></td>
         </tr>
         <tr>
             <td><label for="pin">PIN Code: </label></td>
-            <td><input id="pin" name="pin" type="number" max="999999"</td>
+            <td><input id="pin" name="pin" type="number" max="999999"></td>
         </tr>
         <tr>
             <td><label for="picture">Picture: </label></td>
-            <td><input id="picture" name="picture" type="url"</td>
+            <td><input id="picture" name="picture" type="url"></td>
              <td><p><b>Please use a URL to the picture</b></p></td>
         </tr>
         <tr>
@@ -56,26 +56,27 @@
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT, ["cost" => 11]);
         $query_const = "INSERT INTO customer (id, name, dob, joined, phone, email, address, pin, password, picture) VALUES (NULL";
         
-        $query_const .= "," . ($_POST["name"]?$_POST["name"]:"NULL");
-        $query_const .= "," . ($_POST["dob"]?$_POST["dob"]:"NULL");
+        $query_const .= "," . ($_POST["name"]?"\"{$_POST["name"]}\"":"NULL");
+        $query_const .= "," . ($_POST["dob"]?"\"{$_POST["dob"]}\"":"NULL");
         $query_const .= ",CURRENT_TIMESTAMP";
-        $query_const .= "," . ($_POST["phone"]?$_POST["phone"]:"NULL");
-        $query_const .= "," . $_POST["email"];
-        $query_const .= "," . ($_POST["address"]?$_POST["address"]:"NULL"); 
-        $query_const .= "," . ($_POST["pin"]?$_POST["pin"]:"NULL"); 
-        $query_const .= "," . $password; 
-        $query_const .= "," . ($_POST["picture"]?$_POST["picture"]:"NULL"); 
-        $query_const .= ")";
+        $query_const .= "," . ($_POST["phone"]?"\"{$_POST["phone"]}\"":"NULL");
+        $query_const .= "," . "\"{$_POST["email"]}\"";
+        $query_const .= "," . ($_POST["address"]?"\"{$_POST["address"]}\"":"NULL"); 
+        $query_const .= "," . ($_POST["pin"]?"\"{$_POST["pin"]}\"":"NULL"); 
+        $query_const .= "," . "\"{$password}\""; 
+        $query_const .= "," . ($_POST["picture"]?"\"{$_POST["picture"]}\"":"NULL"); 
+        $query_const .= ");";
 
         echo $query_const;
 
+        // Write out the generated SQL to the script file
         $open_file = fopen("./user_data.sql", "a+");
-        echo $open_file;
         fwrite($open_file, $query_const);
+        fwrite($open_file, "\n");
         fflush($open_file);
         fclose($open_file);
 
-        //header("Location: {$_SERVER["PHP_SELF"]}", true, 302);
+        header("Location: {$_SERVER["PHP_SELF"]}", true, 302);
     }
 ?>
 <script>
