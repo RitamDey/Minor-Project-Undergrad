@@ -86,10 +86,13 @@ document.getElementById("show-button").addEventListener("click", function(event)
 
     console.log(element.type);
 
-    if (element.type === "password")
-        element.type = "text";
-    else
-        element.type = "password";
+    if (element.type === "password") {
+	    element.type = "text";
+	    document.getElementById("show-button").innerText = "Hide Password";
+    } else {
+	    element.type = "password";
+	    document.getElementById("show-button").innerText = "Show Password";
+    }
 });
 </script>
 </body>
