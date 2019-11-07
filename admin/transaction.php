@@ -14,6 +14,23 @@ echo "<br>";
 	<h1>Transacion Hisory&nbsp</h1>
 	<hr size="5" color="red"></hr>
 </head>
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "saptarshi";
+session_start();
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) 
+    die("Connection failed: " . $conn->connect_error);
+
+if($_SESSION)
+{
+	$a_id=$_SESSION["a_id"];
+	$pwd=$_SESSION["apwd"];
+	?>
 <body>
 	<div class="hyperlink">
 
@@ -110,4 +127,13 @@ echo "<br>";
 </table>
 </div>
 </body>
+<?
+}
+else
+{
+?>
+<center><a href="adminlogin.html"><font color=WHITE size=30>Please Login</font></a></center>
+<?
+}
+?>
 </html> 
