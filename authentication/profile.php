@@ -40,7 +40,7 @@
 ?>
 <div class="profile">
     <div class="picture">
-        <img src="<?php echo $user["picture"]; ?>">
+        <img src="<?php echo $user["picture"]; ?>" width="150" height="200" >
     </div>
 
     <div class="name">
