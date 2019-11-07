@@ -24,6 +24,23 @@ echo "<br>";
 	<h1>Welcome To ABC BookStore Admin Panel</h1>
 	<hr size="5" color="red"></hr>
 </head>
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "saptarshi";
+session_start();
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) 
+    die("Connection failed: " . $conn->connect_error);
+
+if($_SESSION)
+{
+	$a_id=$_SESSION["a_id"];
+	$pwd=$_SESSION["apwd"];
+	?>
 <body>
 	<div class="hyperlink">
 
@@ -63,4 +80,12 @@ echo "<br>";
 	
 	
 </body>
+}
+else
+{
+?>
+<center><a href="adminlogin.html"><font color=WHITE size=30>Please Login</font></a></center>
+<?
+}
+?>
 </html>
