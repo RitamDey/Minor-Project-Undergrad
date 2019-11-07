@@ -4,9 +4,16 @@
     require_once "templates/header.html.php";
     $connection->select_db("authentication");
 
-    if (checkActiveSession($_COOKIE["PHPSESSID"] === false)) {
+    if (checkActiveSession($_COOKIE["PHPSESSID"]) === false) {
         header("Location: /authentication/login.php", true, 302);
+        die();
     }
+
+    /**
+     * Prevent browser from caching this page.
+     * no-store: Says the browser not to cache the response at all
+    **/
+    header("Cache-Control: no-store");
 
     $session = $_COOKIE["PHPSESSID"];
     $user_id = null;
@@ -61,10 +68,12 @@
         echo "<td>{$book_name}</td>";
         echo "<td>{$quantity}</td>";
         echo "<td>{$price}</td>";
+        echo "<td><button><a href=\"/cart.php?book={$isbn}\">Add one more</a></button></td>";
         echo "</tr>";
     }
 ?>
 </table>
+<button><a href="/buy.php">Buy Now!</a></button>
 <?php
     $book_query->close();
     require_once "templates/footer.html.php";

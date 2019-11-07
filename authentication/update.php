@@ -2,6 +2,12 @@
     require_once "lib/sanitizers_validators.php";
     $sess = $_COOKIE["PHPSESSID"];
 
+    /**
+     * Prevent browser from caching this page.
+     * no-store: Says the browser not to cache the response at all
+    **/
+    header("Cache-Control: no-store");
+
     $connection = new mysqli("localhost", "bookstore", "bookstore", "authentication");
     $session_query = "SELECT user FROM user_sessions WHERE session = '{$sess}'";
 
