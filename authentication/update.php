@@ -97,7 +97,7 @@
                 $connection->query($picture_query);
             }
 
-            header("Location: /authentication/profile.php", true, 302);
+            header("Location: /authentication/history.php", true, 302);
         }
     }
 ?>
