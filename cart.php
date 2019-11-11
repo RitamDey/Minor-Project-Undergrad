@@ -41,6 +41,31 @@
     }
     $cart_id = $user_id;
 
+    if (isset($_GET["book"])) {
+        // Add the following book to the cart and redirect to the referring page
+        $book_query = "SELECT quantity FROM shopcart_items WHERE cart=\"{$cart_id}\" AND book=\"{$_GET["book"]}\"";
+        $cart_book = $connection->query($book_query);
+
+        if ($cart_book->num_rows > 0) {
+            $add_result = $connection->query("UPDATE shopcart_items SET quantity = quantity + 1 WHERE book = \"{$_GET["book"]}\"");
+
+            if ($add_result === false && $add_result->errno) {
+                echo $add_result->error;
+                die();
+            }
+        } else {
+            $add_book = $connection->query("INSERT INTO shopcart_items (cart,book) VALUES ({$cart_id},{$_GET["book"]})");
+
+            if ($add_book === false && $add_book->errno) {
+                echo $add_book->error;
+                die();
+            }
+        }
+
+        // Now redirect back to the referring page
+        header("Location: {$_SERVER["HTTP_REFERER"]}", true, 302);
+    }
+
     // Get the books in the cart.
     $cart_books = "SELECT book,quantity FROM shopcart_items WHERE cart={$cart_id}";
     $result = $connection->query($cart_books);
