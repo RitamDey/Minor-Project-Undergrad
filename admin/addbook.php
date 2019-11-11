@@ -1,17 +1,11 @@
 <?php
 
-$eid=$_POST['eid'];
-$connect=mysqli_connect("localhost","root","","authentication") or mysqli_error();
+$connect=mysqli_connect("localhost","root","","bookstore") or mysqli_error();
 echo "Connection successful";
 echo "<br>";
-if($eid=="*")
-{
-    $result=mysqli_query($connect, "select * from customer");
-}
-else
-{
-    $result=mysqli_query($connect, "select * from customer where (id='$eid')");
-}
+
+    $result=mysqli_query($connect, "select * from book");
+
 
 ?>
 
@@ -27,15 +21,18 @@ else
 <link rel="stylesheet" href="/assets/css/emp.css">
 
 	<h1>Welcome To ABC BookStore Admin Panel</h1>
-	<hr size="5" color="red"></hr>
+    <hr size="5" width="2700" color="red"></hr>
+    
 
-	<style>
+
+
+    <style>
         #report1 {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
 	
     background-color:white;
-	opacity:.75;
+	opacity:1
 	text-align: center;
     width: 100%;
 }
@@ -56,12 +53,16 @@ else
     color: white;
 }
         </style>
+
+        
+
+
 </head>
 <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "saptarshi";
+$dbname = "bookstore";
 session_start();
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -100,16 +101,20 @@ if ($conn->connect_error)
 			
 		</div>
     <br>
-  <div class="loginbox">
+  <font color="WHITE">
     <table id="report1">
-            <th><P>ID</P></th>
+            <th><P>Isbn</P></th>
             <th><p>Name</P></th>
-            <th><P>Dob</P></th>
-            <th><P>Date of Join</P></th>
-			<th><P>Phone</P></th>
-			<th><P>Email</P></th>
-			<th><P>Address</P></th>
-			<th><P>Pin</P></th>
+            <th><P>Details</P></th>
+            <th><P>Date_published</P></th>
+			<th><P>Price</P></th>
+			<th><P>Book_Number</P></th>
+			<th><P>Series</P></th>
+            <th><P>Publisher</P></th>
+            <th><P>Author</P></th>
+            <th><P>Picture</P></th>
+            <th><P>Total_Pages</P></th>
+            <th><P>Date_Added</P></th>
             
 <?php
 while($row=mysqli_fetch_assoc($result))
@@ -117,14 +122,22 @@ while($row=mysqli_fetch_assoc($result))
     echo "<tr>";
     
     
-    echo "<td>"." ".$row['id']."</P>"."</td>";
+    echo "<td>"." ".$row['isbn']."</P>"."</td>";
     echo "<td>"." ".$row['name']."</P>"."</td>";
-    echo "<td>"." ".$row['dob']."</P>"."</td>";
-    echo "<td>"." ".$row['joined']."</P>"."</td>";
-	echo "<td>"." ".$row['phone']."</P>"."</td>";
-	echo "<td>"." ".$row['email']."</P>"."</td>";
-	echo "<td>"." ".$row['address']."</P>"."</td>";
-	echo "<td>"." ".$row['pin']."</P>"."</td>";
+    echo "<td>"." ".$row['detail']."</P>"."</td>";
+    echo "<td>"." ".$row['date_published']."</P>"."</td>";
+	echo "<td>"." ".$row['price']."</P>"."</td>";
+	echo "<td>"." ".$row['book_number']."</P>"."</td>";
+	echo "<td>"." ".$row['series']."</P>"."</td>";
+    echo "<td>"." ".$row['publisher']."</P>"."</td>";
+    echo "<td>"." ".$row['author']."</P>"."</td>";
+    
+    echo "<td>"." ".$row['picture']."</P>"."</td>";
+
+
+    
+    echo "<td>"." ".$row['total_pages']."</P>"."</td>";
+    echo "<td>"." ".$row['date_added']."</P>"."</td>";
     
     echo "</tr>";
     
@@ -133,8 +146,10 @@ while($row=mysqli_fetch_assoc($result))
 ?>
 
 </table>
-
-&nbsp &nbsp &nbsp<a href="delete.html">Delete Table</a>
+</font>
+&nbsp &nbsp &nbsp<p><a href="updatebook.html">Update Table</a>
+&nbsp &nbsp &nbsp<a href="insertbook.html">Insert Table</a>
+&nbsp &nbsp &nbsp<a href="deletebook.html">Delete Table</a>
 </div>
 </body>
 <?

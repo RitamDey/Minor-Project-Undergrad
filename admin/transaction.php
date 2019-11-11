@@ -9,6 +9,33 @@ echo "<br>";
 	Transcation History
 </title>
 <head>
+
+<style>
+        #report1 {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+	
+	opacity:.75;
+	text-align: center;
+    width: 100%;
+}
+
+#report1 td  #report1 tr{
+    border: 1px solid #ddd;
+	
+	padding: 8px;
+}
+
+
+#report1 th {
+    padding-top: 12px;
+    border: 1px solid #ddd;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+}
+        </style>
 <link rel="stylesheet" href="/admin/assets/image.css">
 <link rel="stylesheet" href="/assets/css/emp.css">
 	<h1>Transacion Hisory&nbsp</h1>
@@ -37,7 +64,7 @@ if($_SESSION)
         
         
         
-    &nbsp &nbsp &nbsp &nbsp<a href="signout.php">Sign Out</a> &nbsp &nbsp
+    &nbsp &nbsp &nbsp &nbsp<a href="signout.php">Sign Out</a>
 		
 		
 	</div>
@@ -47,9 +74,9 @@ if($_SESSION)
 				<li><a href="transaction.php">Transaction Details</a></li>
 				<li><a href="product.html">Add Book & Other</a>
 					<ul>
-						<li><a href="storybook.html">Add Book</a></li>
-						<li><a href="sducational.html">Add Author</a></li>
-						<li><a href="competetive">Add Publisher</a></li>
+						<li><a href="addbook.php">Add Book</a></li>
+						<li><a href="addauthor.php">Add Author</a></li>
+						<li><a href="addpublisher.php">Add Publisher</a></li>
 						
 				</ul></li>
 				
@@ -58,14 +85,16 @@ if($_SESSION)
 			
 		</div>
 	<br>
+	
 <?php
 	if (!isset($_GET['id'])) {
 ?>
   <div class="loginbox">
-    <table>
-            <th><P>Bill ID</P></th>
-            <th><p>Billed To</P></th>
-            <th><P>Billed Date</P></th>
+	  <font color=WHITE>
+    <table id="report1">
+            <th> Bill ID</P></th>
+            <th> Billed To</P></th>
+            <th> Billed Date</P></th>
            
             
 <?php
@@ -75,9 +104,9 @@ if($_SESSION)
 			$user_name = "SELECT name FROM authentication.customer WHERE id={$row['billed_to']}";
 			$user = $connect->query($user_name)->fetch_assoc();
 
-			echo "<td>"."<a href='/admin/transaction.php?id={$row['id']}'><p>".$row['id']."</p></a>"."</td>";
-			echo "<td>"."<p>".$user['name']."</P>"."</td>";
-			echo "<td>"."<p>".$row['time']."</P>"."</td>";
+			echo "<td>"."<a href='/admin/transaction.php?id={$row['id']}'>".$row['id']."</p></a>"."</td>";
+			echo "<td>"." ".$user['name']."</P>"."</td>";
+			echo "<td>"." ".$row['time']."</P>"."</td>";
 			
 			
 			echo "</tr>";
@@ -101,7 +130,7 @@ if($_SESSION)
 
 ?>
 	<div class="loginbox">
-		<table>
+		<table id="report1">
 			<th><p>ISBN</p></th>
 			<th><p>Book Name</p></th>
 			<th><p>Quantity</p></th>

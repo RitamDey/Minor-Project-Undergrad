@@ -1,11 +1,35 @@
+<?php
+
+$name=$_POST['name'];
+$bio=$_POST['bio'];
+$site=$_POST['site'];
+$picture=$_POST['picture'];
+$dob=$_POST['dob'];
+
+
+
+echo "$isbn";
+
+$connect=mysqli_connect("localhost","root","","bookstore");
+echo "Connection successful";
+echo "<br>";
+
+$insert="insert into publisher (isbn,name,detail,date_published,price,book_number,series,publisher,author,picture,total_pages,date_added) values ($isbn,'$name','$detail','$date_published',$price,$book_number,$series,'$publisher','$author','$picture',$total_pages,'$date_added')";
+$result=mysqli_query($connect, $insert);
+echo "<br>";
+
+
+
+?>
+
 <html>
 <title>
 	Book store management
 </title>
 <head>
-<link rel="stylesheet" href="/admin/assets/image.css">
-<link rel="stylesheet" href="/admin/assets/admin.css">
-	<h1>Welcome To BookStore Inc Admin Panel</h1>
+<link rel="stylesheet" href="../image.css">
+<link rel="stylesheet" href="../assets/css/admin.css">
+	<h1>Welcome To ABC BookStore Admin Panel</h1>
 	<hr size="5" color="red"></hr>
 </head>
 <?php
@@ -25,7 +49,7 @@ if($_SESSION)
 	$a_id=$_SESSION["a_id"];
 	$pwd=$_SESSION["apwd"];
 	?>
-	<body>
+<body>
 	<div class="hyperlink">
 
         
@@ -41,7 +65,7 @@ if($_SESSION)
 				<li><a href="product.html">Add Book & Other</a>
 					<ul>
 						<li><a href="addbook.php">Add Book</a></li>
-						<li><a href="addauthor.php">Add Auther</a></li>
+						<li><a href="addauthor.php">Add Author</a></li>
 						<li><a href="addpublisher.php">Add Publisher</a></li>
 						
 				</ul></li>
@@ -50,11 +74,20 @@ if($_SESSION)
 			</ul>
 			
 		</div>
-	<br>
+    <br>
+  <?php
+  if($result==NULL)
+  {   echo "<br>";
+      echo "<p>"."Record Insertion Faliure!!!!";
+  }
+  else
+  {   echo "<br>";
+      echo"<p>".("Record Successfully Inserted");
+  }
+  ?>
 	
 	
 </body>
-	<?
 }
 else
 {

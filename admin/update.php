@@ -55,14 +55,14 @@ if($_SESSION)
 	</div>
 	<div class="menu">
 			<ul>
-				<li><a href="employee.html">Employee Details</a></li>
+				<li><a href="employee.html">Customer Details</a></li>
 				<li><a href="transaction.php">Transaction Details</a></li>
-				<li><a href="product.html">Status of Stock</a>
+				<li><a href="product.html">Add Book & Other</a>
 					<ul>
-						<li><a href="storybook.html">Story Book</a></li>
-						<li><a href="sducational.html">Educational Book</a></li>
-						<li><a href="competetive">Competative Exam Book</a></li>
-						<li><a href="novel.html">Novel</a></li>
+						<li><a href="addbook.php">Add Book</a></li>
+						<li><a href="addauthor.php">Add Author</a></li>
+						<li><a href="addpublisher.php">Add Publisher</a></li>
+						
 				</ul></li>
 				
 				<li><a href="contact.html"></a></li>
