@@ -3,14 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 05, 2019 at 04:39 AM
+-- Generation Time: Oct 29, 2019 at 09:32 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+05:30";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `employee`
 --
--- Creation: Oct 05, 2019 at 02:38 AM
+-- Creation: Oct 05, 2019 at 02:41 AM
 --
 
 CREATE TABLE `employee` (
@@ -53,7 +53,7 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `is_admin`, `name`, `dob`, `joined`, `phone`, `email`, `address`, `pin`, `password`, `picture`) VALUES
-(2, 1, 'Ritam Dey', '1999-03-27', '2019-10-05 08:09:38', 8250504694, 'deyritam27031999@gmail.com', 'localhost', 713213, '$2y$11$p6CesRstEEA7tSDeR5OTKuVey985Tl1lEvvlqpfAnF9dBln/mIU3m', NULL);
+(0, 1, 'Ritam Dey', '1999-03-27', '2019-10-05 08:09:38', 8250504694, 'deyritam27031999@gmail.com', 'localhost', 713213, '$2y$11$p6CesRstEEA7tSDeR5OTKuVey985Tl1lEvvlqpfAnF9dBln/mIU3m', NULL);
 
 --
 -- Indexes for dumped tables
@@ -75,7 +75,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

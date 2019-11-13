@@ -1,0 +1,74 @@
+<html>
+<title>
+	Book store management
+</title>
+<head>
+<link rel="stylesheet" href="../image.css">
+<link rel="stylesheet" href="../assets/css/admin.css">
+
+	<h1>Welcome To ABC BookStore Admin Panel</h1>
+	<hr size="5" color="red"></hr>
+</head>
+<body>
+	<div class="hyperlink">
+
+        
+        
+        &nbsp &nbsp &nbsp &nbsp<a href="signout.php">Sign Out</a> &nbsp &nbsp
+		
+		
+	</div>
+	<div class="menu">
+			<ul>
+				<li><a href="employee.html">Customer Details</a></li>
+				<li><a href="transaction.php">Transaction Details</a></li>
+				<li><a href="product.html">Add Book & Other</a>
+					<ul>
+						<li><a href="addbook.php">Add Book</a></li>
+						<li><a href="addauthor.php">Add Author</a></li>
+						<li><a href="addpublisher.php">Add Publisher</a></li>
+						
+				</ul></li>
+				
+				<li><a href="contact.html"></a></li>
+			</ul>
+			
+		</div>
+    <br>
+    <div class="loginbox">
+            <h1 align="center">Insert Book Details</h1><br>
+            <form name="update" method="POST" action="insertbook.php" onsubmit="val()">
+               <p>ISBN</p>
+               <input type="number" name="isbn" placeholder="Enter ISBN ID" required><br>
+               <p>Book Name</p>
+               <input type="text" name="name" placeholder="Enter Book Name"><br>
+               <p>Details</p>
+               <textarea wrap="soft" rows="10" cols="40" name="detail" placeholder="Enter Book Details"></textarea>
+               <p>Date Of Published</p>
+               <input type="date" name="date_published" placeholder="Enter Date Of Published"><br>
+               <p>Price</p>
+               <input type="number" name="price" placeholder="Enter Price"><br><br>
+               <p>Book Number</p>
+               <input type="number" name="book_number" placeholder="Enter Book Number"><br><br>
+               <p>Series</p>
+               <input type="text" name="series" placeholder="Enter Series"><br><br>
+               <p>Publisher</p>
+               <input type="text" name="publisher" placeholder="Enter Publisher"><br><br>
+               <p>Author</p>
+               <input type="text" name="author" placeholder="Enter Author Name"><br><br>
+               <p>Picture</p>
+               <input type="text" name="picture" placeholder="Enter Book Picture Link"><br><br>
+               <p>Total Pages</p>
+               <input type="number" name="total_pages" placeholder="Enter Total Pages"><br><br>
+               <p>Date Added</p>
+               <input type="date" name="date_added" placeholder="Enter Date Of Added"><br><br>
+               
+               <br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<input type="submit" name="submit" value="submit"> <br>
+               
+
+           </form>
+        </div>
+	
+	
+</body>
+</html>

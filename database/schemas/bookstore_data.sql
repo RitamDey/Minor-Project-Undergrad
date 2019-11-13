@@ -12,7 +12,7 @@ INSERT INTO `author` (`name`, `bio`, `site`, `picture`, `dob`) VALUES (
 	'1965-07-31'
 );
 
-INSERT INTO `publisher` (`name`, `address`, `contact`) VALES (
+INSERT INTO `publisher` (`name`, `address`, `contact`) VALUES (
 	"Sample Pubisher",
 	"localhost",
 	"8250504694"

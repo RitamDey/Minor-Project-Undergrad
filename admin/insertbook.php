@@ -1,13 +1,27 @@
 <?php
 
-$eid=$_POST['id'];
+$isbn=$_POST['isbn'];
+$name=$_POST['name'];
+$detail=$_POST['detail'];
+$date_published=$_POST['date_published'];
+$price=$_POST['price'];
+$book_number=$_POST['book_number'];
+$series=$_POST['series'];
+$publisher=$_POST['publisher'];
+$author=$_POST['author'];
+$picture=$_POST['picture'];
+$total_pages=$_POST['total_pages'];
+$date_added=$_POST['date_added'];
 
-$connect=mysqli_connect("localhost","root","","saptarshi") or mysqli_error();
+
+echo "$isbn";
+
+$connect=mysqli_connect("localhost","root","","bookstore");
 echo "Connection successful";
 echo "<br>";
 
-$delete="delete from amp where emp_id=$eid";
-$result=mysqli_query($connect, $delete);
+$insert="insert into book (isbn,name,detail,date_published,price,book_number,series,publisher,author,picture,total_pages,date_added) values ($isbn,'$name','$detail','$date_published',$price,$book_number,$series,'$publisher','$author','$picture',$total_pages,'$date_added')";
+$result=mysqli_query($connect, $insert);
 echo "<br>";
 
 
@@ -70,11 +84,11 @@ if($_SESSION)
   <?php
   if($result==NULL)
   {   echo "<br>";
-      echo "<p>"."Record Deletion Faliure!!!!";
+      echo "<p>"."Record Insertion Faliure!!!!";
   }
   else
   {   echo "<br>";
-      echo"<p>".("Record Successfully Deleted");
+      echo"<p>".("Record Successfully Inserted");
   }
   ?>
 	

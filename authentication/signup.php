@@ -2,7 +2,7 @@
     require_once "lib/sanitizers_validators.php";
 
     if (isset($_COOKIE["PHPSESSID"]) && checkActiveSession($_COOKIE["PHPSESSID"])) {
-        header("Location: /authentication/profile.php", true, 302);
+        header("Location: /authentication/history.php", true, 302);
         die();
     }
     // require_once "../templates/header.html.php";

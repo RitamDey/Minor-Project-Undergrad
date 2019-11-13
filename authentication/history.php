@@ -4,6 +4,12 @@
 
     $connection = new mysqli("localhost", "bookstore", "bookstore");
 
+    /**
+     * Prevent browser from caching this page.
+     * no-store: Says the browser not to cache the response at all
+    **/
+    header("Cache-Control: no-store");
+
     if (isset($_GET["name"])) {
         // TODO: Let user view other users
         // Display the profile of the said user
@@ -26,12 +32,16 @@
 
         $bill_query = "SELECT id,time FROM sales.bill WHERE billed_to = {$user_id}";
         $bills = $connection->query($bill_query);
+        
+        $TITLE = "{$user["name"]} -- Bookstore Inc";
+        require_once "templates/header.html.php";
 
     }
 ?>
 <div class="profile">
     <div class="picture">
-        <img src="<?php echo $user["picture"]; ?>">
+        <img src="<?php echo $user["picture"]; ?>" width="200" height="200" >
+        
     </div>
 
     <div class="name">
@@ -70,4 +80,6 @@
         echo "<tr><td></td><td>Total Amount</td><td>{$total}</td></tr>";
         echo "</table>";
     }
+
+    require_once "templates/footer.html.php";
 ?>
