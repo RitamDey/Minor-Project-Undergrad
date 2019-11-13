@@ -2,7 +2,7 @@
     require_once "lib/sanitizers_validators.php";
 
     if (isset($_COOKIE["PHPSESSID"]) && checkActiveSession($_COOKIE["PHPSESSID"])) {
-        header("Location: /authentication/profile.php", true, 302);
+        header("Location: /authentication/history.php", true, 302);
         exit(0);
     }
 
@@ -44,6 +44,6 @@
         $connection->query($query);
 
         // Redirect to the /authentication/profile.php after the process is done
-        header("Location: /authentication/profile.php", true, 302);
+        header("Location: /authentication/history.php", true, 302);
     }
 ?>
