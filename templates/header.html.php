@@ -39,9 +39,9 @@ if (isset($_COOKIE["PHPSESSID"]) && checkActiveSession($_COOKIE["PHPSESSID"])) {
     <br><br>
 
     <div class="searchbox">
-        <form action="/search.php?q=" method="GET">
-            &nbsp;&nbsp;&nbsp;<input type="text" placeholder="Type To Search">
-            <button><i class="fas fa-search"></i></button>
+        <form action="/search.php?" method="GET">
+            &nbsp;&nbsp;&nbsp;<input type="text" name="q" placeholder="Type To Search">
+            <button type="submit"><i class="fas fa-search"></i></button>
         </form>
     </div>
 
