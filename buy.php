@@ -14,6 +14,14 @@
         $user_id = $user_id->fetch_assoc()["user"];
     }
 
+    // If the cart is empty, then there no use creating a empty bill. Redirect back to the homepage
+    $empty_cart = $connection->query("SELECT count(book) AS book_count FROM shopcart_items");
+    if ($empty_cart === false || ((int)$empty_cart->fetch_assoc()["book_count"]) < 1) {
+        // Cart is empty. Redirect.
+        header("Location: /", true, 302);
+        die();
+    }
+
     $create_bill = $connection->query("INSERT INTO bill (billed_to) VALUES (\"{$user_id}\")");
 
     if ($create_bill === false && $create_bill->errno) {
