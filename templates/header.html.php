@@ -20,7 +20,6 @@ if ($connection->get_connection_stats() === false) {
     <div id="menu">
         <ul>
             <li><a href="/" class="current">Home</a></li>
-            <li><a href="#">Search</a></li>
             <li><a href="/index.php?new-releases">New Releases</a></li>
             <li><a href="/about.php">About Us</a></li>
             <li><a href="/contact.php">Contact Us</a></li>
