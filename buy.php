@@ -71,7 +71,11 @@
     }
 ?>
 
-<button><a href="/authentication/history.php">View Purchase History</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button><a href="/">Return to bookstore</a></button>
+<div id="content_right">
+   <img src="/assests/images/order.png" width="960">
+   <h1>Your Order No - <?php echo $last_bill; ?><br><br>
+   <button><a href="/authentication/history.php"><b>View Purchase History</b></a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button><a href="/"><b>Return to bookstore</b></a></button>
+</div>
 
 <?php
     require_once "templates/footer.html.php";
