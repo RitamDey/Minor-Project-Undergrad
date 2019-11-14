@@ -45,6 +45,10 @@
         $connection->query($query);
 
         // Redirect to the /authentication/profile.php after the process is done
-        header("Location: /authentication/history.php", true, 302);
+        if (isset($_SERVER["HTTP_REFERER"])) {
+            header("Location: {$_SERVER["HTTP_REFERER"]}", true, 302);
+        } else {
+            header("Location: /authentication/history.php", true, 302);
+        }
     }
 ?>
