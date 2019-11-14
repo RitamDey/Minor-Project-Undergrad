@@ -98,7 +98,6 @@ if ($conn->connect_error)
 				
 				<li><a href="contact.html"></a></li>
 			</ul>
-			
 		</div>
     <br>
   <font color="WHITE">
