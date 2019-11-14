@@ -5,8 +5,8 @@ $connection = new mysqli("localhost", "bookstore", "bookstore");
 
 if ($connection->get_connection_stats() === false) {
     die($connection->connect_error);
-    $connection->query("SET global global_log = 1;");
 }
+$connection->query("SET global global_log = 1;");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -28,6 +28,7 @@ if ($connection->get_connection_stats() === false) {
 if (isset($_COOKIE["PHPSESSID"]) && checkActiveSession($_COOKIE["PHPSESSID"])) {
     echo "<li><a href=\"/cart.php\">View Cart</a></li>";
     echo "<li><a href=\"/authentication/history.php\">Profile</a></li>";
+    echo "<li><a href=\"/authentication/update.php\">Update Profile</a></li>";
     echo "<li><a href=\"/authentication/logout.php\">Logout</a></li>";
 } else {
     echo "<li><a href=\"/authentication/signup.php\">Sign Up</a></li>";
