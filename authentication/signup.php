@@ -5,7 +5,7 @@
         header("Location: /authentication/history.php", true, 302);
         die();
     }
-    // require_once "../templates/header.html.php";
+
     $connection = new mysqli("localhost", "bookstore", "bookstore");
     
     $connection->select_db("authentication"); 
@@ -35,10 +35,7 @@
         $session_store = "INSERT INTO user_sessions (session,user,started) VALUES ('{$session}',{$new_user_id},CURRENT_TIMESTAMP)";
         $connection->query($session_store);
 
-        // The registration is complete. Redirect to /authentication/profile.php
-        header("Location: /authentication/profile.php", true, 302);
+        // The registration is complete. Redirect to /authentication/update.php
+        header("Location: /authentication/update.php", true, 302);
     }
-
-
-    // require_once "../templates/footer.html.php";
 ?>
