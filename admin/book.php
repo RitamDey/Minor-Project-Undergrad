@@ -54,13 +54,13 @@ if($_SESSION)
 	
 	
 </body>
-	<?
+	<?php
 }
 else
 {
 ?>
 <center><a href="adminlogin.html"><font color=WHITE size=30>Please Login</font></a></center>
-<?
+<?php
 }
 ?>
 </html>

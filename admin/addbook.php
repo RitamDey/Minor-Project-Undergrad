@@ -152,13 +152,13 @@ while($row=mysqli_fetch_assoc($result))
 &nbsp &nbsp &nbsp<a href="deletebook.html">Delete Table</a>
 </div>
 </body>
-<?
+<?php
 }
 else
 {
 ?>
 <center><a href="adminlogin.html"><font color=WHITE size=30>Please Login</font></a></center>
-<?
+<?php
 }
 ?>
 </html>
