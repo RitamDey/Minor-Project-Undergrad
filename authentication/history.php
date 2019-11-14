@@ -9,34 +9,25 @@
      * no-store: Says the browser not to cache the response at all
     **/
     header("Cache-Control: no-store");
+    
+    // Check if a active session is avaliable for the user
+    $query = "SELECT user FROM authentication.user_sessions WHERE session = '{$sess}'";
+    $user_id = $connection->query($query);
 
-    if (isset($_GET["name"])) {
-        // TODO: Let user view other users
-        // Display the profile of the said user
-        $name = santizeName($_GET["name"]);
-        require_once "display_profile.php";
-
-    } else {
-        // Check if a active session is avaliable for the user
-        $query = "SELECT user FROM authentication.user_sessions WHERE session = '{$sess}'";
-        $user_id = $connection->query($query);
-
-        if (!checkActiveSession($sess)) {
-            header("Location: /authentication/login.php", true, 302);
-        }
-
-        $user_id = $user_id->fetch_assoc()["user"];
-
-        $user_query = "SELECT name,dob,picture FROM authentication.customer WHERE id = {$user_id}";
-        $user = $connection->query($user_query)->fetch_assoc();
-
-        $bill_query = "SELECT id,time FROM sales.bill WHERE billed_to = {$user_id}";
-        $bills = $connection->query($bill_query);
-        
-        $TITLE = "{$user["name"]} -- Bookstore Inc";
-        require_once "templates/header.html.php";
-
+    if (!checkActiveSession($sess)) {
+        header("Location: /authentication/login.php", true, 302);
     }
+
+    $user_id = $user_id->fetch_assoc()["user"];
+
+    $user_query = "SELECT name,dob,picture FROM authentication.customer WHERE id = {$user_id}";
+    $user = $connection->query($user_query)->fetch_assoc();
+
+    $bill_query = "SELECT id,time FROM sales.bill WHERE billed_to = {$user_id}";
+    $bills = $connection->query($bill_query);
+    
+    $TITLE = "{$user["name"]} -- Bookstore Inc";
+    require_once "templates/header.html.php";
 ?>
 <div class="profile">
     <div class="picture">
@@ -75,7 +66,7 @@
             echo "<td> {$book["quantity"]} </td>";
             echo "</tr>";
 
-            $total += ((int)$name_price["price"] * (int)$book["quantity"]);
+            $total += ((double)$name_price["price"] * (double)$book["quantity"]);
         }
         echo "<tr><td></td><td>Total Amount</td><td>{$total}</td></tr>";
         echo "</table>";
