@@ -29,9 +29,10 @@
 
         $user = $user->fetch_assoc();
         
-        if (!password_verify($password, $user["password"])) {
-             // Redirect to /authentication/login.php if the password provided is not correct.
+        if (password_verify($password, $user["password"]) === false) {
+            // Redirect to /authentication/login.php if the password provided is not correct.
             header("Location: /authentication/login.php", true, 302);
+            die();
         }
 
         // Start the session and create a session id
