@@ -3,7 +3,7 @@
 <link href="/assets/css/signup1.css" rel="stylesheet" type="text/css" />
     <div class="signup">
         <h1 align="center">Quick Signup</h1><br>
-        <form name="signup" method="POST" action="<?php echo $_SERVER["PHP_SELF"] // PHP_SELF refers to the current page?>">
+        <form name="signup" method="POST" action="<?php echo $_SERVER["PHP_SELF"] // PHP_SELF refers to the current page ?>">
             <label for="email">Email</p>
             <input type="email" name="email" id="email" placeholder="Enter your email address" required><br>
             <label for="password">Password</label>
@@ -31,10 +31,8 @@
        let created_password = document.getElementById("password");
        let confirm_password = document.getElementById("cpassword");
 
-       console.log(created_password);
-       console.log(confirm_password);
-
        if (confirm_password.length) {
+
        }
     }
 </script>
