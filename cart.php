@@ -2,6 +2,7 @@
     require_once "lib/sanitizers_validators.php";
     $TITLE = "Purchase preview -- Bookstore Inc";
     require_once "templates/header.html.php";
+    $connection->query("SET global global_log = 1;");
     $connection->select_db("authentication");
 
     if (checkActiveSession($_COOKIE["PHPSESSID"]) === false) {
@@ -64,6 +65,26 @@
 
         // Now redirect back to the referring page
         header("Location: {$_SERVER["HTTP_REFERER"]}", true, 302);
+    } else if (isset($_GET["remove"])) {
+        // Remove a book from the cart or decrease its quantity by 1
+        $book_quantity = $connection->query("SELECT quantity FROM shopcart_items WHERE cart=\"{$cart_id}\" AND book=\"{$_GET["remove"]}\"");
+
+        if ($book_quantity === false || $book_quantity->num_rows === 0) {
+            // Now redirect back to the referring page
+            header("Location: {$_SERVER["HTTP_REFERER"]}", true, 302);
+            die();
+        }
+
+        $quantity = (int)$book_quantity->fetch_assoc()["quantity"];
+
+        if ($quantity > 1) {
+            $result = $connection->query("UPDATE shopcart_items SET quantity = quantity - 1 WHERE book = \"{$_GET["remove"]}\"");
+        } else {
+            $result = $connection->query("DELETE FROM shopcart_items WHERE book = \"{$_GET["remove"]}\"");
+        }
+        
+        header("Location: {$_SERVER["HTTP_REFERER"]}", true, 302);
+        die();
     }
 
     // Get the books in the cart.
@@ -94,6 +115,7 @@
         echo "<td>{$quantity}</td>";
         echo "<td>{$price}</td>";
         echo "<td><button><a href=\"/cart.php?book={$isbn}\">Add one more</a></button></td>";
+        echo "<td><button><a href=\"/cart.php?remove={$isbn}\">Remove one</a></button></td>";
         echo "</tr>";
     }
 ?>
