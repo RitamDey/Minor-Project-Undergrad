@@ -22,13 +22,19 @@ require_once "templates/header.html.php";
         <input type="number" name="pin" placeholder="Enter Your Area Pincode"><br><br>
         <p>Picture</p><br>
         <input type="file" name="pic"><br><br>
+        <p> Current Password</p>
+        <input type="password" name="pin" placeholder="Enter Your Password" required><br><br>
+        <p>New Password</p>
+        <input type="password" name="pin" placeholder="Enter Your New Password"><br><br>
         <br><br>
         &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="submit" name="submit" value="Update">
-</form>        
+    </form>  
+</div>
+
 
   
 
-</div>
+
 <link rel="stylesheet" href="/assets/css/image.css">
 <?php
 require_once "templates/footer.html.php";
