@@ -29,6 +29,7 @@ if (isset($_COOKIE["PHPSESSID"]) && checkActiveSession($_COOKIE["PHPSESSID"])) {
     echo "<li><a href=\"/cart.php\">View Cart</a></li>";
     echo "<li><a href=\"/authentication/history.php\">Profile</a></li>";
     echo "<li><a href=\"/authentication/update.php\">Update Profile</a></li>";
+    echo "<li><a href=\"/authentication/change-password.php\">Change Password</a></li>";
     echo "<li><a href=\"/authentication/logout.php\">Logout</a></li>";
 } else {
     echo "<li><a href=\"/authentication/signup.php\">Sign Up</a></li>";
